@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import Hero from "@/components/Hero";
 import ScrollReveal from "@/components/ScrollReveal";
 
 // about / work / contact 는 다음 이슈에서 시안대로 교체한다. 지금은 앵커만 잡아둔 자리
@@ -13,6 +14,8 @@ export default function Home() {
     <>
       <Header />
       <main className="flex flex-1 flex-col">
+        <Hero />
+
         {placeholders.map(({ id, title }) => (
           <section
             key={id}
