@@ -1,0 +1,55 @@
+name: CI/CD
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm exec tsc --noEmit
+
+  deploy:
+    needs: verify
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.ref == 'refs/heads/master' && 'production' || 'preview' }}
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Deploy to Vercel
+        id: deploy
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          # master는 production, 그 외는 preview 배포
+          PROD: ${{ github.ref == 'refs/heads/master' && '--prod' || '' }}
+        run: |
+          pnpm dlx vercel@latest pull --yes --token="$VERCEL_TOKEN" \
+            --environment=${{ github.ref == 'refs/heads/master' && 'production' || 'preview' }}
+          pnpm dlx vercel@latest build $PROD --token="$VERCEL_TOKEN"
+          url=$(pnpm dlx vercel@latest deploy --prebuilt $PROD --token="$VERCEL_TOKEN")
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "배포 완료: $url" >> "$GITHUB_STEP_SUMMARY"
