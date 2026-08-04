@@ -16,7 +16,7 @@ export default function Home() {
         <Contact />
       </main>
 
-      <footer className="border-t border-hairline">
+      <footer className="mt-section border-t border-hairline">
         <div className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-4 px-6 py-8 md:px-gutter">
           <p className="font-mono text-xs text-ink-subtle">
             © {new Date().getFullYear()} 전병국
