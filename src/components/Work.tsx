@@ -25,7 +25,7 @@ export default function Work() {
 
       <div className="mt-12 flex flex-col gap-4">
         {cases.map(({ title, period, role, desc, metrics, tint, shot }) => (
-          <ScrollReveal key={title}>
+          <ScrollReveal key={title} fade={false}>
             <article
               className={`grid gap-6 rounded-case border border-hairline p-6 md:grid-cols-[1fr_0.8fr] md:p-8 ${tint}`}
             >
