@@ -1,26 +1,126 @@
 @import "tailwindcss";
 
+/* 시안의 ☾/☀ 토글로 제어하므로 dark 는 미디어쿼리가 아닌 클래스 기준 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 테마별로 값이 바뀌는 토큰. @theme inline 이 var() 를 그대로 참조한다 */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --surface: #fbfbfa;
+  --surface-footer: #18181b;
+  --ink: #18181b;
+  --ink-muted: #71717a;
+  --ink-subtle: #a1a1aa;
+  /* 시안은 0.58 이지만 #fbfbfa 대비 4.3:1 로 12~14px 텍스트가 AA 미달.
+     시안이 작은 라벨에 쓰던 0.5 로 통일 (약 6:1) */
+  --accent: oklch(0.5 0.075 262);
+  --accent-dim: oklch(0.72 0.075 262);
+  --accent-wash: oklch(0.62 0.075 262 / 0.06);
+  --hairline: #ececec;
+
+  /* glass 는 색만 뒤집는 게 아니라 border·shadow 구성 자체가 테마마다 다르다 */
+  --glass-bg: rgb(255 255 255 / 0.55);
+  --glass-border: rgb(255 255 255 / 0.75);
+  --glass-shadow:
+    0 1px 0 rgb(255 255 255 / 0.95) inset, 0 -1px 0 rgb(24 24 27 / 0.04) inset,
+    14px 16px 34px -18px rgb(24 24 27 / 0.22),
+    -10px -10px 26px -14px rgb(255 255 255 / 0.9);
+
+  /* sticky 헤더는 카드와 달리 아래로만 그림자가 떨어진다 */
+  --bar-border: rgb(255 255 255 / 0.7);
+  --bar-shadow:
+    0 1px 0 rgb(255 255 255 / 0.9) inset, 0 14px 30px -24px rgb(24 24 27 / 0.5);
+
+  --shot-stripe: rgb(24 24 27 / 0.05);
+  --orb: oklch(0.62 0.075 262 / 0.12);
+}
+
+.dark {
+  --surface: #0b0b0d;
+  --surface-footer: #131316;
+  --ink: #f4f4f5;
+  --ink-muted: #a1a1aa;
+  --ink-subtle: #71717a;
+  --accent: oklch(0.82 0.07 262);
+  --accent-dim: oklch(0.78 0.075 262);
+  --accent-wash: oklch(0.62 0.075 262 / 0.13);
+  --hairline: #26262a;
+
+  --glass-bg: rgb(255 255 255 / 0.045);
+  --glass-border: rgb(255 255 255 / 0.09);
+  --glass-shadow:
+    0 1px 0 rgb(255 255 255 / 0.12) inset, 0 -1px 0 rgb(0 0 0 / 0.4) inset,
+    16px 18px 40px -20px rgb(0 0 0 / 0.8),
+    -8px -8px 24px -18px rgb(255 255 255 / 0.06);
+
+  --bar-border: rgb(255 255 255 / 0.1);
+  --bar-shadow:
+    0 1px 0 rgb(255 255 255 / 0.12) inset, 0 14px 34px -26px rgb(0 0 0 / 0.9);
+
+  --shot-stripe: rgb(255 255 255 / 0.06);
+  --orb: oklch(0.62 0.075 262 / 0.28);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-footer: var(--surface-footer);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-accent-wash: var(--accent-wash);
+  --color-hairline: var(--hairline);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* 시안은 1180px 고정폭이라 그대로 쓰면 모바일이 깨진다. 상한을 시안 값으로 두고 clamp */
+  --text-display: clamp(2.5rem, 6vw, 3.875rem); /* → 62px */
+  --text-title: clamp(2rem, 4.5vw, 2.875rem); /* → 46px */
+  --text-section: clamp(1.375rem, 2.5vw, 1.625rem); /* → 26px */
+
+  --tracking-display: -0.035em;
+  --tracking-heading: -0.02em;
+
+  --radius-card: 22px;
+  --radius-case: 26px;
+  --radius-shot: 18px;
+
+  --container-page: 1180px;
+  --spacing-section: 84px;
+  --spacing-gutter: 56px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* 카드·칩·버튼 5종이 같은 glass 조합을 쓴다. 컴포넌트마다 dark: 로 두 벌 적지 않도록 한 클래스로 */
+@utility glass {
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(20px) saturate(1.6);
+}
+
+@utility glass-bar {
+  background-color: color-mix(in oklab, var(--surface) 50%, transparent);
+  border-bottom: 1px solid var(--bar-border);
+  box-shadow: var(--bar-shadow);
+  backdrop-filter: blur(26px) saturate(1.6);
+}
+
+/* 스크린샷 자리표시자의 사선 패턴. glass 와 겹쳐 쓴다 */
+@utility shot {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--shot-stripe) 0 10px,
+    transparent 10px 20px
+  );
+}
+
+html {
+  /* sticky 헤더 높이만큼. 앵커 이동 시 제목이 헤더 밑에 깔리지 않도록 */
+  scroll-padding-top: 72px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--surface);
+  color: var(--ink);
 }

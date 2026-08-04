@@ -1,33 +1,36 @@
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
 import ScrollReveal from "@/components/ScrollReveal";
+
+// about / work / contact 는 다음 이슈에서 시안대로 교체한다. 지금은 앵커만 잡아둔 자리
+const placeholders = [
+  { id: "about", title: "About" },
+  { id: "work", title: "Selected Work" },
+  { id: "contact", title: "Contact" },
+];
 
 export default function Home() {
   return (
-    <main className="flex flex-1 flex-col bg-zinc-50 font-sans dark:bg-black">
-      <section className="flex h-screen flex-col items-center justify-center gap-4 text-center">
-        <h1 className="text-4xl font-semibold tracking-tight text-black dark:text-zinc-50 sm:text-6xl">
-          Your Name
-        </h1>
-        <p className="max-w-md text-lg text-zinc-600 dark:text-zinc-400">
-          Scroll down — smooth scroll is powered by Lenis and animations by
-          GSAP ScrollTrigger.
-        </p>
-      </section>
+    <>
+      <Header />
+      <main className="flex flex-1 flex-col">
+        <Hero />
 
-      {["About", "Work", "Contact"].map((title) => (
-        <section
-          key={title}
-          className="flex min-h-screen items-center justify-center px-8"
-        >
-          <ScrollReveal className="max-w-xl text-center">
-            <h2 className="text-3xl font-semibold text-black dark:text-zinc-50">
-              {title}
-            </h2>
-            <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-              Replace this section with your own content.
-            </p>
-          </ScrollReveal>
-        </section>
-      ))}
-    </main>
+        {placeholders.map(({ id, title }) => (
+          <section
+            key={id}
+            id={id}
+            className="flex min-h-screen items-center justify-center px-6"
+          >
+            <ScrollReveal className="max-w-xl text-center">
+              <h2 className="text-section font-light tracking-heading">
+                {title}
+              </h2>
+              <p className="mt-4 text-ink-muted">다음 이슈에서 구현합니다.</p>
+            </ScrollReveal>
+          </section>
+        ))}
+      </main>
+    </>
   );
 }
