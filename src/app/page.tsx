@@ -1,13 +1,9 @@
+import About from "@/components/About";
+import Contact from "@/components/Contact";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import ScrollReveal from "@/components/ScrollReveal";
-
-// about / work / contact 는 다음 이슈에서 시안대로 교체한다. 지금은 앵커만 잡아둔 자리
-const placeholders = [
-  { id: "about", title: "About" },
-  { id: "work", title: "Selected Work" },
-  { id: "contact", title: "Contact" },
-];
+import Work from "@/components/Work";
+import { socials } from "@/data/profile";
 
 export default function Home() {
   return (
@@ -15,22 +11,32 @@ export default function Home() {
       <Header />
       <main className="flex flex-1 flex-col">
         <Hero />
-
-        {placeholders.map(({ id, title }) => (
-          <section
-            key={id}
-            id={id}
-            className="flex min-h-screen items-center justify-center px-6"
-          >
-            <ScrollReveal className="max-w-xl text-center">
-              <h2 className="text-section font-light tracking-heading">
-                {title}
-              </h2>
-              <p className="mt-4 text-ink-muted">다음 이슈에서 구현합니다.</p>
-            </ScrollReveal>
-          </section>
-        ))}
+        <About />
+        <Work />
+        <Contact />
       </main>
+
+      <footer className="border-t border-hairline">
+        <div className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-4 px-6 py-8 md:px-gutter">
+          <p className="font-mono text-xs text-ink-subtle">
+            © {new Date().getFullYear()} 전병국
+          </p>
+          <ul className="flex gap-5">
+            {socials.map(({ label, href }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="font-mono text-xs text-ink-muted transition-colors hover:text-accent"
+                >
+                  {label} ↗
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </footer>
     </>
   );
 }
