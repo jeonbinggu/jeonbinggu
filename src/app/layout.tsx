@@ -30,9 +30,11 @@ export default function RootLayout({
     <html
       lang="ko"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="flex min-h-full flex-col font-sans">
+      {/* html 에 height:100% 를 주면 Lenis 가 스크롤 한계를 뷰포트 높이로 고정해 버린다.
+          푸터를 바닥에 붙이는 건 dvh 로 처리 */}
+      <body className="flex min-h-dvh flex-col font-sans">
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
