@@ -5,16 +5,28 @@
 
 /* 테마별로 값이 바뀌는 토큰. @theme inline 이 var() 를 그대로 참조한다 */
 :root {
-  --surface: #fbfbfa;
-  --surface-footer: #18181b;
+  /* glass 가 굴절시킬 게 있어야 표면이 보인다. 단색 배경이면 backdrop-filter 가 무의미 */
+  --surface-page: linear-gradient(
+    180deg,
+    #f7f7fa 0%,
+    #e9ebf4 44%,
+    #f2f2f6 100%
+  );
+  /* 그라디언트 최상단 색. sticky 헤더의 color-mix 와 버튼 대비색이 이 값을 쓴다 */
+  --surface: #f7f7fa;
+  /* 그라디언트 최하단(#f2f2f6)보다 한 단계 진하게. 푸터가 본문에서 떨어져 보이는 최소치 */
+  --surface-footer: #e7e9f1;
   --ink: #18181b;
   --ink-muted: #71717a;
   --ink-subtle: #a1a1aa;
   /* 시안은 0.58 이지만 #fbfbfa 대비 4.3:1 로 12~14px 텍스트가 AA 미달.
      시안이 작은 라벨에 쓰던 0.5 로 통일 (약 6:1) */
   --accent: oklch(0.5 0.075 262);
+  /* 라이트/다크 양쪽에서 어두운 푸터 위에 올라가는 색이라 테마와 무관하게 밝은 쪽 */
   --accent-dim: oklch(0.72 0.075 262);
+  /* wash 는 PROCESS 섹션 배경, veil 은 그 위에 얹히는 CTA 배너 */
   --accent-wash: oklch(0.62 0.075 262 / 0.06);
+  --accent-veil: oklch(0.72 0.075 262 / 0.12);
   --hairline: #ececec;
 
   /* glass 는 색만 뒤집는 게 아니라 border·shadow 구성 자체가 테마마다 다르다 */
@@ -31,16 +43,16 @@
     0 1px 0 rgb(255 255 255 / 0.9) inset, 0 14px 30px -24px rgb(24 24 27 / 0.5);
 
   --shot-stripe: rgb(24 24 27 / 0.05);
-  --orb: oklch(0.62 0.075 262 / 0.12);
-
-  /* 대표 프로젝트 카드 3종의 tint. 다크에서 같은 알파면 묻혀서 테마별로 따로 잡는다 */
-  --tint-1: oklch(0.62 0.075 262 / 0.1);
-  --tint-2: oklch(0.72 0.075 262 / 0.12);
-  --tint-3: oklch(0.58 0.06 300 / 0.09);
 }
 
 .dark {
-  --surface: #0b0b0d;
+  --surface-page: linear-gradient(
+    180deg,
+    #08080a 0%,
+    #12121c 44%,
+    #0a0a0e 100%
+  );
+  --surface: #08080a;
   --surface-footer: #131316;
   --ink: #f4f4f5;
   --ink-muted: #a1a1aa;
@@ -48,6 +60,7 @@
   --accent: oklch(0.82 0.07 262);
   --accent-dim: oklch(0.78 0.075 262);
   --accent-wash: oklch(0.62 0.075 262 / 0.13);
+  --accent-veil: oklch(0.72 0.075 262 / 0.16);
   --hairline: #26262a;
 
   --glass-bg: rgb(255 255 255 / 0.045);
@@ -62,11 +75,6 @@
     0 1px 0 rgb(255 255 255 / 0.12) inset, 0 14px 34px -26px rgb(0 0 0 / 0.9);
 
   --shot-stripe: rgb(255 255 255 / 0.06);
-  --orb: oklch(0.62 0.075 262 / 0.28);
-
-  --tint-1: oklch(0.62 0.075 262 / 0.22);
-  --tint-2: oklch(0.72 0.075 262 / 0.2);
-  --tint-3: oklch(0.62 0.06 300 / 0.2);
 }
 
 @theme inline {
@@ -78,10 +86,8 @@
   --color-accent: var(--accent);
   --color-accent-dim: var(--accent-dim);
   --color-accent-wash: var(--accent-wash);
+  --color-accent-veil: var(--accent-veil);
   --color-hairline: var(--hairline);
-  --color-tint-1: var(--tint-1);
-  --color-tint-2: var(--tint-2);
-  --color-tint-3: var(--tint-3);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -89,6 +95,7 @@
   /* 시안은 1180px 고정폭이라 그대로 쓰면 모바일이 깨진다. 상한을 시안 값으로 두고 clamp */
   --text-display: clamp(2.5rem, 6vw, 3.875rem); /* → 62px */
   --text-title: clamp(2rem, 4.5vw, 2.875rem); /* → 46px */
+  --text-lead: clamp(1.5rem, 3vw, 2rem); /* → 32px */
   --text-section: clamp(1.375rem, 2.5vw, 1.625rem); /* → 26px */
 
   --tracking-display: -0.035em;
@@ -130,9 +137,11 @@
 html {
   /* sticky 헤더 높이만큼. 앵커 이동 시 제목이 헤더 밑에 깔리지 않도록 */
   scroll-padding-top: 72px;
+  /* 그라디언트는 body 박스에만 칠해지므로 오버스크롤 여백은 html 이 받는다 */
+  background: var(--surface);
 }
 
 body {
-  background: var(--surface);
+  background: var(--surface-page);
   color: var(--ink);
 }

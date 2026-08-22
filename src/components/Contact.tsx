@@ -1,90 +1,71 @@
 import ScrollReveal from "./ScrollReveal";
-import { activities, contactCards, email, process } from "@/data/profile";
+import SectionHead, { LabelRow } from "./SectionHead";
+import { activities, contactCards, process } from "@/data/profile";
 
 export default function Contact() {
   return (
     <>
-      <section className="relative mx-auto max-w-page overflow-hidden px-6 pt-section md:px-gutter">
-        <div
-          aria-hidden
-          className="absolute -top-[120px] -right-[100px] size-[320px] rounded-full bg-[var(--orb)] blur-[12px] dark:blur-[24px]"
-        />
+      {/* 유일하게 배경이 깔리는 섹션이라 max-w 래퍼를 안쪽에 둔다 */}
+      <section className="bg-accent-wash py-section">
+        <div className="mx-auto max-w-page px-6 md:px-gutter">
+          <ScrollReveal className="flex flex-col gap-7">
+            <SectionHead kicker="PROCESS">네 단계로 일합니다</SectionHead>
 
-        <ScrollReveal className="relative grid gap-10 md:grid-cols-2">
-          <div>
-            <p className="font-mono text-xs tracking-[0.1em] text-ink-subtle">
-              HOW I WORK
-            </p>
-            <ol className="mt-5 flex flex-col">
+            <ol className="grid gap-4 md:grid-cols-4">
               {process.map(({ no, title, desc }) => (
                 <li
                   key={no}
-                  className="flex gap-4 border-b border-hairline py-4 last:border-0"
+                  className="flex flex-col gap-2.5 border-t border-accent/30 pt-4"
                 >
-                  <span className="font-mono text-xs text-accent">{no}</span>
-                  <div>
-                    <h3 className="text-sm tracking-heading">{title}</h3>
-                    <p className="mt-1 text-sm leading-[1.7] text-ink-muted text-pretty">
-                      {desc}
-                    </p>
-                  </div>
+                  <span className="font-mono text-[22px] text-accent">
+                    {no}
+                  </span>
+                  <h3 className="text-[17px] font-medium">{title}</h3>
+                  <p className="text-[13.5px] leading-[1.7] text-ink-muted text-pretty">
+                    {desc}
+                  </p>
                 </li>
               ))}
             </ol>
-          </div>
+          </ScrollReveal>
+        </div>
+      </section>
 
-          <div>
-            <p className="font-mono text-xs tracking-[0.1em] text-ink-subtle">
-              RECENT
-            </p>
-            <ul className="mt-5 flex flex-col">
+      <section className="mx-auto max-w-page px-6 py-section md:px-gutter">
+        <ScrollReveal>
+          <LabelRow label="ACTIVITY">
+            <ul>
               {activities.map(({ date, title, desc }) => (
                 <li
                   key={title}
-                  className="flex gap-4 border-b border-hairline py-4 last:border-0"
+                  className="grid items-baseline gap-x-5 gap-y-1 border-b border-hairline py-[18px] md:grid-cols-[80px_1fr_1fr]"
                 >
-                  <span className="w-[52px] shrink-0 font-mono text-[11px] text-ink-subtle">
+                  <span className="font-mono text-[13px] text-accent">
                     {date}
                   </span>
-                  <div>
-                    <h3 className="text-sm tracking-heading">{title}</h3>
-                    <p className="mt-1 text-sm leading-[1.7] text-ink-muted text-pretty">
-                      {desc}
-                    </p>
-                  </div>
+                  <h3 className="text-[17px]">{title}</h3>
+                  <p className="text-sm text-ink-muted text-pretty">{desc}</p>
                 </li>
               ))}
             </ul>
-          </div>
+          </LabelRow>
         </ScrollReveal>
       </section>
 
-      {/* 헤더의 "연락처" 링크가 걸리는 자리. 작업 방식/최근 활동은 위 섹션에 남긴다 */}
       <section
         id="contact"
-        className="mx-auto max-w-page px-6 pt-16 pb-section md:px-gutter"
+        className="mx-auto max-w-page px-6 pb-section md:px-gutter"
       >
-        <ScrollReveal className="flex flex-col gap-8 border-t border-hairline pt-12">
-          <h2 className="text-title leading-[1.2] font-light tracking-heading text-balance">
-            만들고 싶은 화면이 있다면
-            <br />
-            <span className="text-accent">편하게 연락 주세요</span>
-          </h2>
+        <ScrollReveal className="flex flex-col gap-7">
+          <SectionHead kicker="CONTACT">편한 방법으로 연락 주세요</SectionHead>
 
-          <a
-            href={`mailto:${email}`}
-            className="font-mono text-base text-ink underline decoration-hairline underline-offset-[6px] transition-colors hover:text-accent"
-          >
-            {email}
-          </a>
-
-          <ul className="grid gap-3 md:grid-cols-3">
+          <ul className="grid gap-4 md:grid-cols-3">
             {contactCards.map(({ title, desc, cta, href }) => (
               <li
                 key={title}
-                className="glass flex flex-col gap-2.5 rounded-card p-5"
+                className="glass flex flex-col gap-2.5 rounded-card p-[26px]"
               >
-                <h3 className="text-base tracking-heading">{title}</h3>
+                <h3 className="text-lg font-medium">{title}</h3>
                 <p className="text-sm leading-[1.7] text-ink-muted text-pretty">
                   {desc}
                 </p>
@@ -93,7 +74,7 @@ export default function Contact() {
                   {...(href.startsWith("http")
                     ? { target: "_blank", rel: "noreferrer noopener" }
                     : {})}
-                  className="mt-auto pt-3 font-mono text-xs text-accent transition-opacity hover:opacity-70"
+                  className="mt-auto pt-1.5 text-sm text-accent transition-opacity hover:opacity-70"
                 >
                   {cta} →
                 </a>

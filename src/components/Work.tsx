@@ -1,124 +1,91 @@
-"use client";
-
-import { useState } from "react";
-
 import ScrollReveal from "./ScrollReveal";
-import { allProjects, cases, filters, githubStats } from "@/data/profile";
+import SectionHead from "./SectionHead";
+import { cases, email, githubStats, githubUrl } from "@/data/profile";
 
 export default function Work() {
-  const [active, setActive] = useState<(typeof filters)[number]>("전체");
-  const visible =
-    active === "전체"
-      ? allProjects
-      : allProjects.filter((p) => p.category === active);
-
   return (
-    <section id="work" className="mx-auto max-w-page px-6 py-section md:px-gutter">
-      <ScrollReveal className="flex flex-col gap-3">
-        <p className="font-mono text-xs tracking-[0.1em] text-accent">
-          SELECTED WORK
-        </p>
-        <h2 className="text-title leading-[1.2] font-light tracking-heading text-balance">
-          측정 가능한 결과가 남은 작업들
-        </h2>
-      </ScrollReveal>
+    <>
+      <section
+        id="work"
+        className="mx-auto max-w-page px-6 pb-section md:px-gutter"
+      >
+        <ScrollReveal>
+          <SectionHead kicker="SELECTED WORK">대표 프로젝트 3</SectionHead>
+        </ScrollReveal>
 
-      <div className="mt-12 flex flex-col gap-4">
-        {cases.map(({ title, period, role, desc, metrics, tint, shot }) => (
-          <ScrollReveal key={title} fade={false}>
-            <article
-              className={`grid gap-6 rounded-case border border-hairline p-6 md:grid-cols-[1fr_0.8fr] md:p-8 ${tint}`}
-            >
-              <div className="flex flex-col gap-3.5">
-                <p className="font-mono text-[11px] tracking-[0.08em] text-ink-subtle">
-                  {period} · {role}
-                </p>
-                <h3 className="text-section font-light tracking-heading">
-                  {title}
-                </h3>
-                <p className="max-w-[46ch] text-sm leading-[1.8] text-ink-muted text-pretty">
-                  {desc}
-                </p>
+        <div className="mt-6 flex flex-col gap-4">
+          {cases.map(({ no, kicker, title, desc, result, shot }) => (
+            // 반투명 표면이라 페이드 중엔 색이 옅게 보인다. 여기는 이동만
+            <ScrollReveal key={no} fade={false}>
+              <article className="glass grid items-center gap-9 rounded-case p-7 md:grid-cols-[1fr_1.15fr]">
+                <div className="flex flex-col gap-3">
+                  <p className="flex gap-3 font-mono text-xs text-accent">
+                    <span>{no}</span>
+                    <span>{kicker}</span>
+                  </p>
+                  <h3 className="text-2xl font-normal tracking-[-0.025em] md:text-[30px]">
+                    {title}
+                  </h3>
+                  <p className="text-[15px] leading-[1.7] text-ink-muted text-pretty">
+                    {desc}
+                  </p>
+                  <p className="font-mono text-[13px] text-accent">{result}</p>
+                </div>
 
-                <dl className="mt-auto flex gap-8 pt-4">
-                  {metrics.map(({ label, value }) => (
-                    <div key={label}>
-                      <dt className="font-mono text-[11px] text-ink-subtle">
-                        {label}
-                      </dt>
-                      <dd className="mt-1 font-mono text-sm text-accent">
-                        {value}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-
-              {/* 실제 스크린샷이 들어올 자리 */}
-              <div className="glass shot flex h-[180px] items-end rounded-shot p-3.5 md:h-auto md:min-h-[200px]">
-                <span className="font-mono text-[11px] text-ink-subtle">
-                  {shot}
-                </span>
-              </div>
-            </article>
-          </ScrollReveal>
-        ))}
-      </div>
-
-      <ScrollReveal className="mt-16 flex flex-col gap-5 border-t border-hairline pt-10">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <p className="font-mono text-xs tracking-[0.1em] text-ink-subtle">
-            ALL PROJECTS
-          </p>
-          <ul className="flex flex-wrap gap-2">
-            {filters.map((filter) => (
-              <li key={filter}>
-                <button
-                  type="button"
-                  onClick={() => setActive(filter)}
-                  aria-pressed={active === filter}
-                  className={`rounded-full border px-3.5 py-1.5 font-mono text-xs transition-colors ${
-                    active === filter
-                      ? "border-accent text-accent"
-                      : "border-hairline text-ink-muted hover:text-ink"
-                  }`}
-                >
-                  {filter}
-                </button>
-              </li>
-            ))}
-          </ul>
+                {/* 실제 스크린샷이 들어올 자리 */}
+                <div className="glass shot flex aspect-[16/10] items-end rounded-shot p-3">
+                  <span className="font-mono text-[11px] text-ink-subtle">
+                    {shot}
+                  </span>
+                </div>
+              </article>
+            </ScrollReveal>
+          ))}
         </div>
+      </section>
 
-        <ul>
-          {visible.map(({ name, desc, status }) => (
-            <li
-              key={name}
-              className="flex flex-wrap items-baseline gap-x-5 gap-y-1 border-b border-hairline py-4"
+      <section className="mx-auto max-w-page px-6 pb-section md:px-gutter">
+        <ScrollReveal className="flex flex-col gap-7">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2">
+            <SectionHead kicker="GITHUB">코드로 남긴 기록</SectionHead>
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="font-mono text-[13px] text-accent transition-opacity hover:opacity-70"
             >
-              <h3 className="text-base tracking-heading">{name}</h3>
-              <p className="flex-1 text-sm text-ink-muted">{desc}</p>
-              <span className="font-mono text-[11px] text-ink-subtle">
-                {status}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </ScrollReveal>
+              github.com/jeonbinggu ↗
+            </a>
+          </div>
 
-      <ScrollReveal className="mt-14">
-        <dl className="glass grid grid-cols-2 gap-6 rounded-card p-6 md:grid-cols-4">
-          {githubStats.map(({ value, label }) => (
-            <div key={label}>
-              <dt className="sr-only">{label}</dt>
-              <dd className="font-mono text-xl text-accent">{value}</dd>
-              <p className="mt-1.5 font-mono text-[11px] text-ink-subtle">
-                {label}
-              </p>
-            </div>
-          ))}
-        </dl>
-      </ScrollReveal>
-    </section>
+          <dl className="grid grid-cols-2 gap-3.5 md:grid-cols-4">
+            {githubStats.map(({ value, label }) => (
+              <div key={label} className="glass rounded-card p-6">
+                <dt className="sr-only">{label}</dt>
+                <dd className="text-[30px] leading-none font-light tracking-[-0.03em]">
+                  {value}
+                </dd>
+                <p className="mt-2 font-mono text-[11.5px] text-ink-subtle">
+                  {label}
+                </p>
+              </div>
+            ))}
+          </dl>
+
+          {/* glass 유틸은 배경색까지 잡아버려서, tint 를 얹는 배너는 테두리·그림자만 빌려 쓴다 */}
+          <div className="flex flex-wrap items-center justify-between gap-6 rounded-[24px] border border-[var(--glass-border)] bg-accent-veil p-7 shadow-[var(--glass-shadow)] backdrop-blur-[18px] md:px-8">
+            <p className="text-xl font-light tracking-heading text-pretty">
+              이력서와 프로젝트 상세 자료를 바로 보내드립니다.
+            </p>
+            <a
+              href={`mailto:${email}?subject=${encodeURIComponent("이력서 요청")}`}
+              className="shrink-0 rounded-full bg-ink px-[22px] py-3 text-sm text-surface transition-colors hover:bg-accent"
+            >
+              이력서 요청하기
+            </a>
+          </div>
+        </ScrollReveal>
+      </section>
+    </>
   );
 }
