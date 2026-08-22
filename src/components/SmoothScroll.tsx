@@ -17,6 +17,10 @@ export default function SmoothScroll({
   useEffect(() => {
     const lenis = new Lenis({
       autoRaf: false,
+      // 앵커 링크를 브라우저에 맡기면 scrollTop 이 즉시 튀는데 Lenis 내부 위치는
+      // 그대로라, 다음 프레임에 되돌아오면서 끊겨 보인다. Lenis 가 직접 처리하게 넘긴다.
+      // offset 은 sticky 헤더 높이 (globals.css 의 scroll-padding-top 과 같은 값)
+      anchors: { offset: -72 },
     });
     lenisRef.current = lenis;
 
