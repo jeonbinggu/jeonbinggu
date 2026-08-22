@@ -32,6 +32,11 @@
 
   --shot-stripe: rgb(24 24 27 / 0.05);
   --orb: oklch(0.62 0.075 262 / 0.12);
+
+  /* 대표 프로젝트 카드 3종의 tint. 다크에서 같은 알파면 묻혀서 테마별로 따로 잡는다 */
+  --tint-1: oklch(0.62 0.075 262 / 0.1);
+  --tint-2: oklch(0.72 0.075 262 / 0.12);
+  --tint-3: oklch(0.58 0.06 300 / 0.09);
 }
 
 .dark {
@@ -58,6 +63,10 @@
 
   --shot-stripe: rgb(255 255 255 / 0.06);
   --orb: oklch(0.62 0.075 262 / 0.28);
+
+  --tint-1: oklch(0.62 0.075 262 / 0.22);
+  --tint-2: oklch(0.72 0.075 262 / 0.2);
+  --tint-3: oklch(0.62 0.06 300 / 0.2);
 }
 
 @theme inline {
@@ -70,6 +79,9 @@
   --color-accent-dim: var(--accent-dim);
   --color-accent-wash: var(--accent-wash);
   --color-hairline: var(--hairline);
+  --color-tint-1: var(--tint-1);
+  --color-tint-2: var(--tint-2);
+  --color-tint-3: var(--tint-3);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
