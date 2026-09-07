@@ -1,58 +1,25 @@
 import About from "@/components/About";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Work from "@/components/Work";
-import { email, socials } from "@/data/profile";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main className="flex flex-1 flex-col">
+      {/* main 을 flex 컨테이너로 두면 mx-auto 를 가진 섹션이 flex 아이템이 되는데,
+          교차축 margin 이 auto 면 stretch 가 꺼져 폭이 내용(fit-content)을 따라간다.
+          아코디언을 펼칠 때 섹션이 넓어지던 원인 */}
+      <main className="flex-1">
         <Hero />
         <About />
         <Work />
         <Contact />
       </main>
 
-      {/* 구분선은 hairline 이 푸터 배경에 묻혀서 ink 알파로 잡는다 (양 테마 모두 보임) */}
-      <footer className="bg-surface-footer text-ink">
-        <div className="mx-auto flex max-w-page flex-col gap-[22px] px-6 py-[90px] md:px-gutter">
-          <p className="font-mono text-xs tracking-[0.1em] text-accent">
-            LET&apos;S WORK TOGETHER
-          </p>
-
-          <h2 className="max-w-[18ch] text-title leading-[1.2] font-light tracking-display">
-            함께 만들 화면이 있다면.
-          </h2>
-
-          <a
-            href={`mailto:${email}`}
-            className="font-mono text-xl text-accent transition-opacity hover:opacity-70"
-          >
-            {email}
-          </a>
-
-          <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-ink/10 pt-[22px] font-mono text-xs text-ink-muted">
-            <p>© {new Date().getFullYear()} 전병국 · Seoul, KR</p>
-            <ul className="flex gap-[18px]">
-              {socials.map(({ label, href }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="transition-colors hover:text-accent"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

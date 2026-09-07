@@ -18,8 +18,11 @@ export const metadata: Metadata = {
   description: "Personal portfolio website",
 };
 
-// body 첫 자식으로 동기 실행돼 페인트 전에 테마가 확정된다 (FOUC 방지)
-const themeScript = `try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.classList.add("dark")}catch(e){}`;
+// body 첫 자식으로 동기 실행돼 페인트 전에 테마가 확정된다 (FOUC 방지).
+// className 이 아니라 data-theme 에 쓴다 — html 의 className 은 이 레이아웃이 렌더하는
+// 값이라, 라우트 이동으로 루트 레이아웃이 다시 조정되면 명령형으로 붙인 클래스가 날아간다.
+// data-theme 은 React 가 렌더하지 않는 속성이라 건드리지 않는다
+const themeScript = `try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.dataset.theme="dark"}catch(e){}`;
 
 export default function RootLayout({
   children,
