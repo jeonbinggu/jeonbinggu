@@ -9,7 +9,7 @@ export default function Contact() {
       <section className="bg-accent-wash py-section">
         <div className="mx-auto max-w-page px-6 md:px-gutter">
           <ScrollReveal className="flex flex-col gap-7">
-            <SectionHead kicker="PROCESS">네 단계로 일합니다</SectionHead>
+            <SectionHead kicker="PROCESS">추측을 계측으로 바꿉니다</SectionHead>
 
             <ol className="grid gap-4 md:grid-cols-4">
               {process.map(({ no, title, desc }) => (
