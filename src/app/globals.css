@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
-/* 시안의 ☾/☀ 토글로 제어하므로 dark 는 미디어쿼리가 아닌 클래스 기준 */
-@custom-variant dark (&:where(.dark, .dark *));
+/* 시안의 ☾/☀ 토글로 제어하므로 미디어쿼리가 아닌 명시적 기준이 필요하다.
+   클래스가 아닌 data-theme 을 쓰는 이유는 layout.tsx 의 themeScript 주석 참고 */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* 테마별로 값이 바뀌는 토큰. @theme inline 이 var() 를 그대로 참조한다 */
 :root {
@@ -45,7 +46,7 @@
   --shot-stripe: rgb(24 24 27 / 0.05);
 }
 
-.dark {
+[data-theme="dark"] {
   --surface-page: linear-gradient(
     180deg,
     #08080a 0%,

@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-const chips = ["React", "TypeScript", "Next.js", "디자인 시스템", "웹 성능"]
+const chips = ["React", "TypeScript", "Next.js", "웹 성능"]
 
 export default function Hero() {
   return (
@@ -8,7 +8,7 @@ export default function Hero() {
       <div className="mx-auto grid max-w-page items-center gap-12 px-6 pt-section pb-[72px] md:grid-cols-[1.15fr_0.85fr] md:px-gutter">
         <div className="flex flex-col gap-[22px]">
           <p className="font-mono text-xs tracking-[0.1em] text-accent">
-            FRONTEND DEVELOPER · 3 YEARS
+            FRONTEND DEVELOPER
           </p>
 
           <h1 className="text-display leading-[1.12] font-light tracking-display text-balance">

@@ -1,6 +1,10 @@
+import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 import SectionHead from "./SectionHead";
 import { cases, email, githubStats, githubUrl } from "@/data/profile";
+
+const ctaClass =
+  "mt-1 w-fit rounded-full bg-ink px-[18px] py-2.5 text-[13px] text-surface transition-colors hover:bg-accent";
 
 export default function Work() {
   return (
@@ -30,15 +34,21 @@ export default function Work() {
                     {desc}
                   </p>
                   <p className="font-mono text-[13px] text-accent">{result}</p>
-                  <a
-                    href={href}
-                    {...(href.startsWith("http")
-                      ? { target: "_blank", rel: "noreferrer noopener" }
-                      : {})}
-                    className="mt-1 w-fit rounded-full bg-ink px-[18px] py-2.5 text-[13px] text-surface transition-colors hover:bg-accent"
-                  >
-                    {cta} →
-                  </a>
+                  {/* 내부 경로는 Link 여야 프리페치되고 전체 새로고침 없이 넘어간다 */}
+                  {href.startsWith("http") ? (
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className={ctaClass}
+                    >
+                      {cta} ↗
+                    </a>
+                  ) : (
+                    <Link href={href} className={ctaClass}>
+                      {cta} →
+                    </Link>
+                  )}
                 </div>
 
                 {/* 실제 스크린샷이 들어올 자리 */}

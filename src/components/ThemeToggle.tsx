@@ -10,7 +10,9 @@ export default function ThemeToggle() {
       type="button"
       aria-label="라이트/다크 테마 전환"
       onClick={() => {
-        const dark = document.documentElement.classList.toggle("dark");
+        const el = document.documentElement;
+        const dark = el.dataset.theme !== "dark";
+        el.dataset.theme = dark ? "dark" : "light";
         localStorage.setItem("theme", dark ? "dark" : "light");
       }}
       className="glass flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-full text-xs text-ink-muted transition-colors hover:text-accent"
