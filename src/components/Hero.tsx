@@ -1,4 +1,6 @@
-const chips = ["React", "TypeScript", "Next.js", "디자인 시스템", "웹 성능"];
+import Image from "next/image"
+
+const chips = ["React", "TypeScript", "Next.js", "디자인 시스템", "웹 성능"]
 
 export default function Hero() {
   return (
@@ -49,13 +51,17 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* 실제 스크린샷이 들어올 자리. 지금은 비율만 잡아둔 자리표시자 */}
-        <div className="glass shot flex h-[320px] items-end rounded-[24px] p-3.5 md:h-[400px]">
-          <span className="font-mono text-[11px] text-ink-subtle">
-            hero screenshot
-          </span>
+        <div className="glass relative aspect-[712/900] h-[240px] w-auto justify-self-center overflow-hidden rounded-[24px] md:h-[330px]">
+          <Image
+            src="/jeonbyeongguk.png"
+            alt="프론트엔드 개발자 전병국 프로필 사진"
+            fill
+            preload
+            sizes="(min-width: 768px) 40vw, 100vw"
+            className="object-cover"
+          />
         </div>
       </div>
     </section>
-  );
+  )
 }
