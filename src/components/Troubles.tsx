@@ -40,10 +40,7 @@ export default function Troubles() {
           const panelId = `${baseId}-${i}`;
 
           return (
-            <article
-              key={no}
-              className="glass w-full min-w-0 overflow-hidden rounded-case"
-            >
+            <article key={no} className="glass overflow-hidden rounded-case">
               <button
                 type="button"
                 onClick={() => toggle(i)}
@@ -73,25 +70,25 @@ export default function Troubles() {
               {isOpen && (
                 <div
                   id={panelId}
-                  className="flex min-w-0 flex-col gap-5 border-t border-ink/[0.06] px-6 pt-1 pb-7 md:pr-7 md:pl-[88px]"
+                  className="flex flex-col gap-5 border-t border-ink/[0.06] px-6 pt-1 pb-7 md:pr-7 md:pl-[88px]"
                 >
                   {blocks.map(({ label, body }) => (
                     <div
                       key={label}
-                      className="grid min-w-0 gap-2 pt-5 md:grid-cols-[84px_1fr] md:gap-5"
+                      className="grid gap-2 pt-5 md:grid-cols-[84px_1fr] md:gap-5"
                     >
                       <p className="font-mono text-[11px] tracking-[0.08em] text-accent md:pt-1">
                         {label}
                       </p>
                       {/* 본문에 \n\n 로 문단을 나눠 두었다 */}
-                      <p className="max-w-[62ch] min-w-0 text-[15px] leading-[1.78] whitespace-pre-line text-ink-muted text-pretty">
+                      <p className="max-w-[62ch] text-[15px] leading-[1.78] whitespace-pre-line text-ink-muted text-pretty">
                         {body}
                       </p>
                     </div>
                   ))}
 
                   {code && (
-                    <pre className="max-w-full min-w-0 overflow-x-auto rounded-shot bg-ink/[0.045] p-5 font-mono text-[12.5px] leading-[1.7] text-ink">
+                    <pre className="max-w-full overflow-x-auto rounded-shot bg-ink/[0.045] p-5 font-mono text-[12.5px] leading-[1.7] text-ink">
                       {code}
                     </pre>
                   )}

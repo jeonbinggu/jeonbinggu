@@ -19,7 +19,8 @@ export default function FindersPage() {
   return (
     <>
       <Header home />
-      <main className="flex flex-1 flex-col">
+      {/* flex 컨테이너면 안 된다 — mx-auto 섹션이 flex 아이템이 되면 stretch 가 꺼져 폭이 내용을 따라간다 */}
+      <main className="flex-1">
         <section
           id="top"
           className="mx-auto flex max-w-page flex-col gap-[22px] px-6 pt-11 pb-[60px] md:px-gutter"

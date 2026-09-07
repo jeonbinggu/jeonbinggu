@@ -6,7 +6,7 @@ export default function Loading() {
   return (
     <>
       <Header home />
-      <main className="flex flex-1 flex-col">
+      <main className="flex-1">
         <div
           aria-busy
           aria-label="Finders 프로젝트 상세를 불러오는 중"
