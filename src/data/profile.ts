@@ -43,8 +43,8 @@ export const cases = [
     desc: "무엇을 먹을지 정해주는 메뉴 추천 서비스. 메인·온보딩 5단계·추천 결과와 위치 기반 맛집 화면을 맡았고, 페이지 폴더에 뭉쳐 있던 코드를 9개월에 걸쳐 FSD 구조로 옮겼습니다.",
     result: "커밋 365개 · 9개월 · 팀 4인",
     shot: "omechu",
-    href: "https://omechu.log8.kr",
-    cta: "서비스 보기",
+    href: "/work/omechu",
+    cta: "상세 보기",
   },
 ];
 

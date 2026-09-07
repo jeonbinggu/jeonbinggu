@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 
-// Link 프리페치가 걸려 있어 평소엔 거의 보이지 않는다. 느린 연결에서만 나오는 자리표시자.
-// 실제 페이지의 상단 골격(제목 → 리드 → 칩 → 4칸 지표)과 높이를 맞춰 전환 시 튀지 않게 했다
+// work/ 하위 상세 페이지가 공유한다. Link 프리페치가 걸려 있어 평소엔 거의 보이지 않고
+// 느린 연결에서만 나온다. 실제 페이지의 상단 골격(제목 → 리드 → 4칸 지표)과 높이를 맞췄다
 export default function Loading() {
   return (
     <>
@@ -9,7 +9,7 @@ export default function Loading() {
       <main className="flex-1">
         <div
           aria-busy
-          aria-label="Finders 프로젝트 상세를 불러오는 중"
+          aria-label="프로젝트 상세를 불러오는 중"
           className="mx-auto flex w-full max-w-page flex-col gap-[22px] px-6 pt-11 pb-[60px] md:px-gutter"
         >
           <div className="h-4 w-40 animate-pulse rounded-full bg-ink/10" />
