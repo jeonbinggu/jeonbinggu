@@ -10,11 +10,11 @@ export default function Work() {
         className="mx-auto max-w-page px-6 pb-section md:px-gutter"
       >
         <ScrollReveal>
-          <SectionHead kicker="SELECTED WORK">대표 프로젝트 3</SectionHead>
+          <SectionHead kicker="SELECTED WORK">대표 프로젝트 2</SectionHead>
         </ScrollReveal>
 
         <div className="mt-6 flex flex-col gap-4">
-          {cases.map(({ no, kicker, title, desc, result, shot }) => (
+          {cases.map(({ no, kicker, title, desc, result, shot, href, cta }) => (
             // 반투명 표면이라 페이드 중엔 색이 옅게 보인다. 여기는 이동만
             <ScrollReveal key={no} fade={false}>
               <article className="glass grid items-center gap-9 rounded-case p-7 md:grid-cols-[1fr_1.15fr]">
@@ -30,6 +30,15 @@ export default function Work() {
                     {desc}
                   </p>
                   <p className="font-mono text-[13px] text-accent">{result}</p>
+                  <a
+                    href={href}
+                    {...(href.startsWith("http")
+                      ? { target: "_blank", rel: "noreferrer noopener" }
+                      : {})}
+                    className="mt-1 w-fit rounded-full bg-ink px-[18px] py-2.5 text-[13px] text-surface transition-colors hover:bg-accent"
+                  >
+                    {cta} →
+                  </a>
                 </div>
 
                 {/* 실제 스크린샷이 들어올 자리 */}
