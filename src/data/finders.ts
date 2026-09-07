@@ -30,8 +30,6 @@ export const finders = {
     { label: "PERIOD", value: "2025.12 — 진행 중" },
     { label: "TEAM", value: "웹 파트 4인" },
     { label: "RELEASE", value: "Play Store · App Store" },
-    // Finders-Official/FE 기여자 통계 기준 540 / 1,722 커밋 (2026.09 측정)
-    { label: "COMMITS", value: "540개 (전체의 31%)" },
   ],
   shots: ["현상소 예약 화면", "사진 피드", "마이페이지"],
   overview:

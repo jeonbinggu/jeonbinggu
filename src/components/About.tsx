@@ -13,14 +13,24 @@ export default function About() {
           <LabelRow label="ABOUT">
             <div className="flex max-w-[56ch] flex-col gap-5">
               <h2 className="text-lead leading-[1.45] font-light tracking-heading text-pretty">
-                코드로 문제를 좁히고, 시스템으로 팀 속도를 올립니다.
+                문제를 재현할 수 있는 조건까지 좁힌 다음 고칩니다.
               </h2>
               <p className="text-base leading-[1.8] text-ink-muted text-pretty">
-                커머스와 운영 대시보드처럼 상태가 많은 제품에서 화면을 만들어
-                왔습니다. 시안을 그대로 옮기는 데서 멈추지 않고, 데이터가 비었을
-                때·느릴 때·실패했을 때까지 화면으로 정의하는 걸 기본으로 봅니다.
-                최근에는 디자인 시스템과 성능 측정을 붙여 팀이 같은 규칙 위에서
-                빠르게 화면을 찍어낼 수 있게 만드는 일에 시간을 쓰고 있습니다.
+                필름 카메라 서비스 Finders에서 웹과 Android·iOS 앱을 하나의 React
+                코드베이스로 만들어 출시하고 운영하고 있습니다. 화면을 만드는 일에서
+                시작했지만, 앱이 실제 기기에서 죽는 문제를 만나며 네이티브 빌드와
+                릴리즈 파이프라인까지 다루게 됐습니다.
+              </p>
+              <p className="text-base leading-[1.8] text-ink-muted text-pretty">
+                release 빌드에서만 앱이 종료되는 크래시를 R8의 코드 제거까지 거슬러
+                올라가 ProGuard 규칙 한 줄로 해결했고, CI에서 한 번도 성공한 적 없던
+                iOS 아카이브를 서명 단계까지 계측해 통과시켰습니다. 두 경우 모두 에러
+                메시지가 가리킨 곳이 실제 원인이 아니었습니다.
+              </p>
+              <p className="text-base leading-[1.8] text-ink-muted text-pretty">
+                그래서 추측보다 계측을 먼저 넣는 편입니다. 재현이 어려운 버그에는
+                회귀 테스트를 남기고, 다음 사람이 같은 벽에 부딪힐 지점에는 진단
+                로그를 지우지 않고 둡니다.
               </p>
             </div>
           </LabelRow>

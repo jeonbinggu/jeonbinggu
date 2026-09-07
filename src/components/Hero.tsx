@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-const chips = ["React", "TypeScript", "Next.js", "웹 성능"]
+const chips = ["React", "TypeScript", "Capacitor", "앱 릴리즈"]
 
 export default function Hero() {
   return (
@@ -12,16 +12,15 @@ export default function Hero() {
           </p>
 
           <h1 className="text-display leading-[1.12] font-light tracking-display text-balance">
-            복잡한 화면을
+            브라우저에서 시작해
             <br />
-            <span className="font-normal text-accent">빠르게 느껴지는</span>
-            <br />
-            흐름으로 만듭니다
+            <span className="font-normal text-accent">스토어에서 끝냅니다</span>
           </h1>
 
-          <p className="max-w-[40ch] text-base leading-[1.75] text-ink-muted text-pretty">
-            커머스·대시보드 제품에서 화면 설계부터 성능 측정까지 맡아온
-            프론트엔드 개발자 전병국입니다.
+          <p className="max-w-[46ch] text-base leading-[1.75] text-ink-muted text-pretty">
+            React 단일 코드베이스를 Capacitor로 패키징해 웹과 Android·iOS에
+            출시하고 운영합니다. release 빌드에서만 나는 크래시, CI 코드 서명
+            실패처럼 웹 계층 밖의 문제를 추적해 해결해 왔습니다.
           </p>
 
           <ul className="flex flex-wrap gap-2">

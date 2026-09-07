@@ -29,8 +29,6 @@ export const omechu = {
     { label: "PERIOD", value: "2025.07 — 2026.03" },
     { label: "TEAM", value: "4인 · UMC 8th" },
     { label: "DEPLOY", value: "omechu.log8.kr" },
-    // 기여자 통계 기준 365 / 3,038 커밋 (2026.09 측정)
-    { label: "COMMITS", value: "365개 (전체의 12%)" },
   ],
   shots: ["메인 추천 화면", "온보딩 5단계", "위치 기반 맛집"],
   overview:
