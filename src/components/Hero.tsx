@@ -12,18 +12,15 @@ export default function Hero() {
           </p>
 
           <h1 className="text-display leading-[1.12] font-light tracking-display text-balance">
-            React 코드베이스 하나로
+            브라우저에서 시작해
             <br />
-            웹과 <span className="font-normal text-accent">두 개의 스토어</span>를
-            <br />
-            운영합니다
+            <span className="font-normal text-accent">스토어에서 끝냅니다</span>
           </h1>
 
           <p className="max-w-[46ch] text-base leading-[1.75] text-ink-muted text-pretty">
             React 단일 코드베이스를 Capacitor로 패키징해 웹과 Android·iOS에
-            출시하고 운영하는 프론트엔드 개발자 전병국입니다. release 빌드에서만
-            나는 크래시, CI 코드 서명 실패처럼 웹 계층 밖의 문제를 추적해 해결하는
-            일을 해왔습니다.
+            출시하고 운영합니다. release 빌드에서만 나는 크래시, CI 코드 서명
+            실패처럼 웹 계층 밖의 문제를 추적해 해결해 왔습니다.
           </p>
 
           <ul className="flex flex-wrap gap-2">
