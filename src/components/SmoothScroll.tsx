@@ -78,7 +78,18 @@ export default function SmoothScroll({
       if (!target) return;
 
       event.preventDefault();
-      lenis.scrollTo(target, { offset: HEADER_OFFSET });
+
+      // duration 과 lock 이 둘 다 필요하다. Lenis 의 기본 scrollTo 는 lerp 기반이라
+      // 끝나는 시점이 없고, 애니메이션 도중 휠·터치 입력 한 번에 취소돼 목적지에
+      // 닿지 못한 채 멈춘다. 전에는 브라우저의 기본 해시 점프가 함께 일어나
+      // 어떻게든 꽂혔지만 이제 preventDefault 로 그 경로가 없다
+      lenis.scrollTo(target, {
+        offset: HEADER_OFFSET,
+        duration: 0.8,
+        lock: true,
+        force: true,
+      });
+
       window.history.replaceState(null, "", url.hash);
     };
 
