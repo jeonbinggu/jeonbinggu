@@ -11,6 +11,10 @@ gsap.registerPlugin(ScrollTrigger);
 // globals.css 의 scroll-padding-top 과 같은 값 (sticky 헤더 높이)
 const HEADER_OFFSET = -72;
 
+// 스크롤 스파이가 훑는 랜딩 섹션. 문서에 놓인 순서 그대로여야 한다.
+// 상세 페이지에는 이 중 #top 만 있고 나머지는 없어서 스파이가 그냥 쉰다
+const SPY_IDS = ["top", "about", "work", "contact"];
+
 // 현재 URL 의 해시가 가리키는 곳으로 (해시가 없으면 맨 위로) 즉시 이동
 function syncToHash(lenis: Lenis) {
   const hash = window.location.hash;
@@ -32,6 +36,9 @@ export default function SmoothScroll({
   const lenisRef = useRef<Lenis | null>(null);
   const pathname = usePathname();
   const firstRender = useRef(true);
+  // 클릭으로 시작한 스크롤이 끝날 때까지는 스파이가 주소를 건드리지 않는다.
+  // 지나치는 섹션마다 주소가 깜빡이지 않도록
+  const clickUntil = useRef(0);
 
   useEffect(() => {
     // Lenis 의 anchors 옵션은 쓰지 않는다. 그 구현은 스크롤만 대신 해줄 뿐
@@ -90,6 +97,7 @@ export default function SmoothScroll({
         force: true,
       });
 
+      clickUntil.current = performance.now() + 900;
       window.history.replaceState(null, "", url.hash);
     };
 
@@ -132,6 +140,45 @@ export default function SmoothScroll({
     // 이전 스크롤 위치를 되돌려 놓는다
     const id = requestAnimationFrame(() => ScrollTrigger.refresh());
     return () => cancelAnimationFrame(id);
+  }, [pathname]);
+
+  // 스크롤 스파이. 지금까지 주소의 해시는 앵커를 클릭할 때만 바뀌어서, 손으로
+  // 스크롤해 프로젝트까지 내려와도 주소는 마지막에 눌렀던 #about · #contact 그대로였다.
+  //
+  // 프레임마다 위치를 재지 않고 IntersectionObserver 를 쓴다. Lenis 가 같은 프레임에
+  // scrollTop 을 쓰기 때문에, 거기서 getBoundingClientRect 를 읽으면 강제 리플로가 난다
+  useEffect(() => {
+    const sections = SPY_IDS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => el !== null,
+    );
+    if (sections.length === 0) return;
+
+    const visible = new Set<string>();
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) visible.add(entry.target.id);
+          else visible.delete(entry.target.id);
+        }
+
+        // 문서 순서상 첫 번째로 걸친 것이 헤더 바로 아래를 차지한 섹션이다.
+        // 하나도 안 걸치면(푸터 구간) 마지막 값을 그대로 둔다
+        const active = SPY_IDS.find((id) => visible.has(id));
+        if (!active || performance.now() < clickUntil.current) return;
+
+        // 히어로에서는 해시를 지운다. pushState 가 아니라 replaceState 라 히스토리는 그대로
+        const next =
+          active === SPY_IDS[0] ? window.location.pathname : `#${active}`;
+        const current = window.location.hash || window.location.pathname;
+        if (next !== current) window.history.replaceState(null, "", next);
+      },
+      // 헤더(72px) 아래부터 화면 40% 지점까지의 띠
+      { rootMargin: `${HEADER_OFFSET}px 0px -60% 0px` },
+    );
+
+    sections.forEach((el) => io.observe(el));
+    return () => io.disconnect();
   }, [pathname]);
 
   return <>{children}</>;
