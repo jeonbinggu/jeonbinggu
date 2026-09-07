@@ -1,12 +1,26 @@
 import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 import SectionHead from "./SectionHead";
-import { cases, email, githubStats, githubUrl } from "@/data/profile";
+import { cases, email, githubUrl } from "@/data/profile";
+import { commitLabel, formatCount, getGithubData } from "@/lib/github";
 
 const ctaClass =
   "mt-1 w-fit rounded-full bg-ink px-[18px] py-2.5 text-[13px] text-surface transition-colors hover:bg-accent";
 
-export default function Work() {
+export default async function Work() {
+  const gh = await getGithubData();
+
+  // 카드의 커밋 수와 아래 지표가 같은 조회 결과에서 나온다. 손으로 맞출 일이 없다
+  const stats = [
+    {
+      value: formatCount(gh.findersCommits.mine + gh.omechuCommits.mine),
+      label: "두 프로젝트 커밋",
+    },
+    { value: formatCount(gh.mergedPrs), label: "머지된 Pull Request" },
+    { value: formatCount(gh.reviewedPrs), label: "리뷰한 Pull Request" },
+    { value: formatCount(gh.openedIssues), label: "작성한 이슈" },
+  ];
+
   return (
     <>
       <section
@@ -18,48 +32,52 @@ export default function Work() {
         </ScrollReveal>
 
         <div className="mt-6 flex flex-col gap-4">
-          {cases.map(({ no, kicker, title, desc, result, shot, href, cta }) => (
-            // 반투명 표면이라 페이드 중엔 색이 옅게 보인다. 여기는 이동만
-            <ScrollReveal key={no} fade={false}>
-              <article className="glass grid items-center gap-9 rounded-case p-7 md:grid-cols-[1fr_1.15fr]">
-                <div className="flex flex-col gap-3">
-                  <p className="flex gap-3 font-mono text-xs text-accent">
-                    <span>{no}</span>
-                    <span>{kicker}</span>
-                  </p>
-                  <h3 className="text-2xl font-normal tracking-[-0.025em] md:text-[30px]">
-                    {title}
-                  </h3>
-                  <p className="text-[15px] leading-[1.7] text-ink-muted text-pretty">
-                    {desc}
-                  </p>
-                  <p className="font-mono text-[13px] text-accent">{result}</p>
-                  {/* 내부 경로는 Link 여야 프리페치되고 전체 새로고침 없이 넘어간다 */}
-                  {href.startsWith("http") ? (
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className={ctaClass}
-                    >
-                      {cta} ↗
-                    </a>
-                  ) : (
-                    <Link href={href} className={ctaClass}>
-                      {cta} →
-                    </Link>
-                  )}
-                </div>
+          {cases.map(
+            ({ no, kicker, title, desc, result, shot, metric, href, cta }) => (
+              // 반투명 표면이라 페이드 중엔 색이 옅게 보인다. 여기는 이동만
+              <ScrollReveal key={no} fade={false}>
+                <article className="glass grid items-center gap-9 rounded-case p-7 md:grid-cols-[1fr_1.15fr]">
+                  <div className="flex flex-col gap-3">
+                    <p className="flex gap-3 font-mono text-xs text-accent">
+                      <span>{no}</span>
+                      <span>{kicker}</span>
+                    </p>
+                    <h3 className="text-2xl font-normal tracking-[-0.025em] md:text-[30px]">
+                      {title}
+                    </h3>
+                    <p className="text-[15px] leading-[1.7] text-ink-muted text-pretty">
+                      {desc}
+                    </p>
+                    <p className="font-mono text-[13px] text-accent">
+                      {commitLabel(gh[metric])} · {result}
+                    </p>
+                    {/* 내부 경로는 Link 여야 프리페치되고 전체 새로고침 없이 넘어간다 */}
+                    {href.startsWith("http") ? (
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className={ctaClass}
+                      >
+                        {cta} ↗
+                      </a>
+                    ) : (
+                      <Link href={href} className={ctaClass}>
+                        {cta} →
+                      </Link>
+                    )}
+                  </div>
 
-                {/* 실제 스크린샷이 들어올 자리 */}
-                <div className="glass shot flex aspect-[16/10] items-end rounded-shot p-3">
-                  <span className="font-mono text-[11px] text-ink-subtle">
-                    {shot}
-                  </span>
-                </div>
-              </article>
-            </ScrollReveal>
-          ))}
+                  {/* 실제 스크린샷이 들어올 자리 */}
+                  <div className="glass shot flex aspect-[16/10] items-end rounded-shot p-3">
+                    <span className="font-mono text-[11px] text-ink-subtle">
+                      {shot}
+                    </span>
+                  </div>
+                </article>
+              </ScrollReveal>
+            ),
+          )}
         </div>
       </section>
 
@@ -78,7 +96,7 @@ export default function Work() {
           </div>
 
           <dl className="grid grid-cols-2 gap-3.5 md:grid-cols-4">
-            {githubStats.map(({ value, label }) => (
+            {stats.map(({ value, label }) => (
               <div key={label} className="glass rounded-card p-6">
                 <dt className="sr-only">{label}</dt>
                 <dd className="text-[30px] leading-none font-light tracking-[-0.03em]">

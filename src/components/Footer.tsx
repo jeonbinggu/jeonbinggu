@@ -10,7 +10,7 @@ export default function Footer() {
         </p>
 
         <h2 className="max-w-[18ch] text-title leading-[1.2] font-light tracking-display">
-          함께 만들 화면이 있다면.
+          함께 만들 제품이 있다면.
         </h2>
 
         <a
