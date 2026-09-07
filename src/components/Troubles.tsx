@@ -1,9 +1,22 @@
 "use client";
 
 import { useId, useState } from "react";
-import { troubles } from "@/data/finders";
 
-export default function Troubles() {
+export type Trouble = {
+  no: string;
+  tag: string;
+  title: string;
+  blocks: { label: string; body: string }[];
+  code: string | null;
+};
+
+export default function Troubles({
+  items,
+  heading,
+}: {
+  items: Trouble[];
+  heading: string;
+}) {
   const [open, setOpen] = useState<number[]>([]);
   const baseId = useId();
   const anyOpen = open.length > 0;
@@ -21,13 +34,13 @@ export default function Troubles() {
             TROUBLESHOOTING
           </p>
           <h2 className="text-section font-light tracking-heading text-balance">
-            웹 계층 밖에서 생긴 문제들
+            {heading}
           </h2>
         </div>
 
         <button
           type="button"
-          onClick={() => setOpen(anyOpen ? [] : troubles.map((_, i) => i))}
+          onClick={() => setOpen(anyOpen ? [] : items.map((_, i) => i))}
           className="glass shrink-0 rounded-full px-4 py-[9px] font-mono text-xs text-ink-muted transition-colors hover:text-accent"
         >
           {anyOpen ? "모두 접기" : "모두 펼치기"}
@@ -35,7 +48,7 @@ export default function Troubles() {
       </div>
 
       <div className="flex flex-col gap-3">
-        {troubles.map(({ no, tag, title, blocks, code }, i) => {
+        {items.map(({ no, tag, title, blocks, code }, i) => {
           const isOpen = open.includes(i);
           const panelId = `${baseId}-${i}`;
 
