@@ -31,7 +31,7 @@ export const cases = [
     kicker: "Mobile · Web · 2025.12 —",
     title: "Finders",
     desc: "필름 카메라 현상소 예약·커뮤니티 서비스. 하나의 React 코드베이스를 Capacitor로 패키징해 웹과 Android·iOS 양대 스토어에 출시하고 운영하고 있습니다.",
-    result: "커밋 567개 (32%) · Play Store · App Store",
+    result: "커밋 540개 (31%) · Play Store · App Store",
     shot: "finders",
     href: "/work/finders",
     cta: "상세 보기",
@@ -41,18 +41,23 @@ export const cases = [
     kicker: "Web · 2025.07 — 2026.03",
     title: "오메추",
     desc: "무엇을 먹을지 정해주는 메뉴 추천 서비스. 메인·온보딩 5단계·추천 결과와 위치 기반 맛집 화면을 맡았고, 페이지 폴더에 뭉쳐 있던 코드를 9개월에 걸쳐 FSD 구조로 옮겼습니다.",
-    result: "커밋 378개 · +16,066 / −7,239",
+    result: "커밋 365개 · 9개월 · 팀 4인",
     shot: "omechu",
     href: "https://omechu.log8.kr",
     cta: "서비스 보기",
   },
 ];
 
+// GitHub API 실측치 (2026.09 측정). 최근 1년 = contributionsCollection 기본 범위.
+// 갱신하려면: gh api graphql -f query='{user(login:"jeonbinggu"){contributionsCollection{
+//   totalCommitContributions totalRepositoriesWithContributedCommits
+//   contributionCalendar{totalContributions}}}}'
+// 머지된 PR: gh api "search/issues?q=is:pr+author:jeonbinggu+is:merged" --jq .total_count
 export const githubStats = [
-  { value: "1,480+", label: "최근 1년 커밋" },
-  { value: "24", label: "공개 리포지토리" },
-  { value: "310+", label: "머지된 Pull Request" },
-  { value: "6", label: "기여한 오픈소스" },
+  { value: "687", label: "최근 1년 커밋" },
+  { value: "929", label: "최근 1년 기여" },
+  { value: "99", label: "머지된 Pull Request" },
+  { value: "5", label: "커밋을 남긴 리포지토리" },
 ];
 
 export const process = [

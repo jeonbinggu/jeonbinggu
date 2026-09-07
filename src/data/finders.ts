@@ -14,13 +14,24 @@ export const finders = {
     "Tailwind CSS",
     "Sentry",
   ],
-  // 레포·스토어 URL 을 받으면 여기에 넣는다. 비어 있으면 버튼이 렌더되지 않는다
-  links: [] as { label: string; href: string; primary?: boolean }[],
+  // 비어 있으면 버튼 영역이 통째로 렌더되지 않는다. Play Store 링크는 아직 없음
+  links: [
+    {
+      label: "레포지토리",
+      href: "https://github.com/Finders-Official/FE",
+      primary: true,
+    },
+    {
+      label: "App Store",
+      href: "https://apps.apple.com/us/app/finders/id6775152930",
+    },
+  ] as { label: string; href: string; primary?: boolean }[],
   facts: [
     { label: "PERIOD", value: "2025.12 — 진행 중" },
     { label: "TEAM", value: "웹 파트 4인" },
     { label: "RELEASE", value: "Play Store · App Store" },
-    { label: "COMMITS", value: "567개 (전체의 32%)" },
+    // Finders-Official/FE 기여자 통계 기준 540 / 1,722 커밋 (2026.09 측정)
+    { label: "COMMITS", value: "540개 (전체의 31%)" },
   ],
   shots: ["현상소 예약 화면", "사진 피드", "마이페이지"],
   overview:
