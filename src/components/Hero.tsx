@@ -2,13 +2,8 @@ const chips = ["React", "TypeScript", "Next.js", "디자인 시스템", "웹 성
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden">
-      <div
-        aria-hidden
-        className="absolute -bottom-[140px] -left-[120px] size-[380px] rounded-full bg-[var(--orb)] blur-[12px] dark:blur-[24px]"
-      />
-
-      <div className="relative mx-auto grid max-w-page items-center gap-12 px-6 pt-section pb-[72px] md:grid-cols-[1.15fr_0.85fr] md:px-gutter">
+    <section id="top">
+      <div className="mx-auto grid max-w-page items-center gap-12 px-6 pt-section pb-[72px] md:grid-cols-[1.15fr_0.85fr] md:px-gutter">
         <div className="flex flex-col gap-[22px]">
           <p className="font-mono text-xs tracking-[0.1em] text-accent">
             FRONTEND DEVELOPER · 3 YEARS
@@ -55,24 +50,10 @@ export default function Hero() {
         </div>
 
         {/* 실제 스크린샷이 들어올 자리. 지금은 비율만 잡아둔 자리표시자 */}
-        <div className="grid h-[320px] grid-rows-[1.4fr_1fr] gap-3 md:h-[400px]">
-          <div className="glass shot flex items-end rounded-[24px] p-3.5">
-            <span className="font-mono text-[11px] text-ink-subtle">
-              hero screenshot
-            </span>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="flex items-end rounded-card border border-[var(--glass-border)] bg-[oklch(0.62_0.075_262/0.14)] p-3.5 backdrop-blur-[14px] dark:bg-[oklch(0.62_0.075_262/0.22)]">
-              <span className="font-mono text-[11px] text-accent">
-                ui detail
-              </span>
-            </div>
-            <div className="flex items-end rounded-card border border-[var(--glass-border)] bg-[oklch(0.72_0.075_262/0.16)] p-3.5 backdrop-blur-[14px] dark:bg-[oklch(0.72_0.075_262/0.22)]">
-              <span className="font-mono text-[11px] text-accent">
-                code shot
-              </span>
-            </div>
-          </div>
+        <div className="glass shot flex h-[320px] items-end rounded-[24px] p-3.5 md:h-[400px]">
+          <span className="font-mono text-[11px] text-ink-subtle">
+            hero screenshot
+          </span>
         </div>
       </div>
     </section>

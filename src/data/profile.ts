@@ -1,10 +1,6 @@
 // 시안의 sc-for 루프에 들어가던 데이터. About / Work / Contact 세 섹션이 공유한다
 
-export const stats = [
-  { value: "3년", label: "프론트엔드 경력" },
-  { value: "12", label: "출시한 서비스·기능" },
-  { value: "1.2s", label: "최근 리뉴얼 LCP" },
-];
+export const githubUrl = "https://github.com/jeonbinggu";
 
 export const expertise = [
   {
@@ -27,105 +23,39 @@ export const expertise = [
   },
 ];
 
-export const skills = [
-  "TypeScript",
-  "React",
-  "Next.js",
-  "Tailwind",
-  "GSAP",
-  "Lenis",
-  "TanStack Query",
-  "Storybook",
-  "Vite",
-  "Playwright",
-];
-
-// tint 는 globals.css 의 --tint-* 토큰. 테마별 알파는 CSS 가 처리한다
+// 카드는 세 개 모두 같은 glass 표면을 쓴다. 구분은 tint 가 아니라 no · kicker 로
 export const cases = [
   {
+    no: "01",
+    kicker: "Commerce · 2025",
     title: "커머스 리뉴얼",
-    period: "2025",
-    role: "프론트엔드 리드",
     desc: "상품·검색·결제 흐름을 다시 설계하고 이미지·번들 로딩 전략을 바꿔 초기 로딩을 3배 가까이 줄였습니다.",
-    metrics: [
-      { label: "LCP", value: "3.4s → 1.2s" },
-      { label: "번들", value: "-38%" },
-    ],
-    tint: "bg-tint-1",
+    result: "LCP 3.4s → 1.2s · 번들 -38%",
     shot: "commerce renewal",
   },
   {
+    no: "02",
+    kicker: "Dashboard · 2024",
     title: "운영 대시보드",
-    period: "2024",
-    role: "프론트엔드 개발",
     desc: "실시간 데이터 스트림과 가상 스크롤을 붙여 수만 행 테이블에서도 끊기지 않는 조작감을 만들었습니다.",
-    metrics: [
-      { label: "행 수", value: "50,000+" },
-      { label: "렌더", value: "16ms 이하" },
-    ],
-    tint: "bg-tint-2",
+    result: "50,000행 · 렌더 16ms 이하",
     shot: "ops dashboard",
   },
   {
+    no: "03",
+    kicker: "Design System · 2023 —",
     title: "디자인 시스템 Pebble",
-    period: "2023 —",
-    role: "메인테이너",
     desc: "토큰·컴포넌트·문서를 한 저장소에서 관리해 팀별로 흩어져 있던 UI 구현을 하나로 모았습니다.",
-    metrics: [
-      { label: "컴포넌트", value: "24개" },
-      { label: "도입 팀", value: "4팀" },
-    ],
-    tint: "bg-tint-3",
+    result: "컴포넌트 24개 · 도입 4팀",
     shot: "design system",
   },
 ];
 
-export const filters = ["전체", "커머스", "대시보드", "시스템"] as const;
-
-export const allProjects = [
-  {
-    name: "커머스 리뉴얼",
-    category: "커머스",
-    desc: "상품 탐색부터 결제까지 전 구간 재구현",
-    status: "운영 중",
-  },
-  {
-    name: "주문 관리 콘솔",
-    category: "커머스",
-    desc: "판매자용 주문·정산 화면",
-    status: "운영 중",
-  },
-  {
-    name: "운영 대시보드",
-    category: "대시보드",
-    desc: "실시간 지표 + 가상 스크롤 테이블",
-    status: "운영 중",
-  },
-  {
-    name: "지표 리포트 뷰어",
-    category: "대시보드",
-    desc: "차트·필터 조합 리포트 화면",
-    status: "개선 중",
-  },
-  {
-    name: "Pebble",
-    category: "시스템",
-    desc: "사내 디자인 시스템 (OSS 공개)",
-    status: "유지보수",
-  },
-  {
-    name: "Pebble Docs",
-    category: "시스템",
-    desc: "컴포넌트 문서 + 플레이그라운드",
-    status: "유지보수",
-  },
-];
-
 export const githubStats = [
-  { value: "1,480+", label: "commits" },
-  { value: "24", label: "repositories" },
-  { value: "310+", label: "pull requests" },
-  { value: "6", label: "open source 기여" },
+  { value: "1,480+", label: "최근 1년 커밋" },
+  { value: "24", label: "공개 리포지토리" },
+  { value: "310+", label: "머지된 Pull Request" },
+  { value: "6", label: "기여한 오픈소스" },
 ];
 
 export const process = [
@@ -182,18 +112,18 @@ export const contactCards = [
     title: "이력서",
     desc: "경력과 프로젝트 상세를 문서로 정리해 두었습니다.",
     cta: "이력서 보기",
-    href: "https://github.com/jeonbinggu",
+    href: githubUrl,
   },
   {
     title: "코드 보기",
     desc: "실제 커밋과 리뷰 흔적으로 작업 방식을 확인하실 수 있습니다.",
     cta: "GitHub 방문",
-    href: "https://github.com/jeonbinggu",
+    href: githubUrl,
   },
 ];
 
 export const socials = [
-  { label: "GitHub", href: "https://github.com/jeonbinggu" },
+  { label: "GitHub", href: githubUrl },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/jeonbinggu" },
-  { label: "Blog", href: "https://github.com/jeonbinggu" },
+  { label: "Blog", href: githubUrl },
 ];
