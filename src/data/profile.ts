@@ -87,13 +87,13 @@ export const process = [
 
 // 동아리 활동 이력. 개발 내역은 위의 프로젝트 카드가 맡는다
 export const activities = [
-  { term: "8기", role: "Web 파트 수료", note: "데모데이 장려상 — 오메추" },
+  { term: "UMC 8기", role: "Web 파트 수료", note: "데모데이 장려상 — 오메추" },
   {
-    term: "9기",
+    term: "UMC 9기",
     role: "Web 파트장",
     note: "데모데이 최우수상(2위) — Finders · 진행 중",
   },
-  { term: "10기", role: "부회장", note: "2026.03.02 — 2026.06.23" },
+  { term: "UMC 10기", role: "부회장", note: "2026.03.02 — 2026.06.23" },
 ];
 
 export const email = "tinyjbk123@gmail.com";

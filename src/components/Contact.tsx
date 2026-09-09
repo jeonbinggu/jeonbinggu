@@ -37,12 +37,12 @@ export default function Contact() {
 
       <section className="mx-auto max-w-page px-6 py-section md:px-gutter">
         <ScrollReveal>
-          <LabelRow label="UMC">
+          <LabelRow label="ACTIVITY">
             <ul>
               {activities.map(({ term, role, note }) => (
                 <li
                   key={term}
-                  className="grid items-baseline gap-x-5 gap-y-1 border-b border-hairline py-[18px] md:grid-cols-[80px_1fr_1fr]"
+                  className="grid items-baseline gap-x-5 gap-y-1 border-b border-hairline py-[18px] md:grid-cols-[104px_1fr_1fr]"
                 >
                   <span className="font-mono text-[13px] text-accent">
                     {term}
