@@ -117,7 +117,7 @@ export default function CaseDetail({
           {shots.map(({ label, src }) => (
             <div
               key={label}
-              className="glass shot relative flex aspect-[9/19.5] items-end overflow-hidden rounded-case p-3.5"
+              className="glass shot relative flex aspect-[9/16] items-end overflow-hidden rounded-case p-3.5"
             >
               {src && (
                 <Image
@@ -125,7 +125,7 @@ export default function CaseDetail({
                   alt={`${title} ${label}`}
                   fill
                   sizes="(min-width: 768px) 33vw, 30vw"
-                  className="object-contain"
+                  className="object-cover object-top"
                 />
               )}
               {/* 이미지 위에 얹히면 대비가 죽는다 — src 가 있을 때만 스크림을 깐다 */}
