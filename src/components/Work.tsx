@@ -80,11 +80,11 @@ export default async function Work() {
                     )}
                   </div>
 
-                  {/* 세로로 긴 스크린샷을 가로 카드에 채운다 — 상단 기준으로 잘린다 */}
+                  {/* 랜딩 캡처를 카드에 채운다 — 비율이 남으면 상단 기준으로 잘린다 */}
                   <div className="glass shot relative flex aspect-[16/10] items-end overflow-hidden rounded-shot p-3">
                     <Image
                       src={shotSrc}
-                      alt={`${title} 메인 화면`}
+                      alt={`${title} 랜딩 화면`}
                       fill
                       sizes="(min-width: 768px) 55vw, 90vw"
                       className="object-cover object-top"
