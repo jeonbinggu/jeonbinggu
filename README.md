@@ -124,21 +124,8 @@ release 빌드에서만 나는 크래시, CI 코드 서명 실패처럼 웹 계�
 
 ---
 
-## 이 저장소
-
-포트폴리오 사이트(`jeonbinggu.vercel.app`)의 소스입니다. Next.js App Router · TypeScript · Tailwind CSS,
-스크롤 연출은 Lenis + GSAP ScrollTrigger(`src/components/SmoothScroll.tsx`)로 처리합니다.
-
-```bash
-pnpm dev     # 개발 서버 (http://localhost:3000)
-pnpm build   # 프로덕션 빌드
-pnpm lint    # ESLint 검사
-```
-
----
 
 <div align="center">
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=jeonbinggu&show_icons=true&hide_border=true&hide_title=true&include_all_commits=true&count_private=true&theme=default)
 
 </div>
