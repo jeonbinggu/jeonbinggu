@@ -85,29 +85,15 @@ export const process = [
   },
 ];
 
-// 날짜는 Finders 이슈·PR 기록으로 확인한 값이다.
-// #363 merged 2026-08-12 (R8 크래시) · #356 merged 2026-08-11 (FCM) · #312 2026-07-02 부터 (CI)
+// 동아리 활동 이력. 개발 내역은 위의 프로젝트 카드가 맡는다
 export const activities = [
+  { term: "UMC 8기", role: "Web 파트 수료", note: "데모데이 장려상 — 오메추" },
   {
-    date: "2026.08",
-    title: "Android release 크래시 해결",
-    desc: "R8이 제거한 직렬화 클래스를 찾아 ProGuard 규칙 한 줄로 좁혀 고쳤습니다.",
+    term: "UMC 9기",
+    role: "Web 파트장",
+    note: "데모데이 최우수상(2위) — Finders · 진행 중",
   },
-  {
-    date: "2026.08",
-    title: "FCM 푸시 알림 도입",
-    desc: "등록·수신·딥링크를 구현하고, 서버와의 딥링크 계약을 경로 문자열에서 action 기반으로 재설계했습니다.",
-  },
-  {
-    date: "2026.07 —",
-    title: "릴리즈 CI 구축",
-    desc: "GitHub Actions에서 AAB·IPA 산출물을 자동 생성합니다. iOS 코드 서명 실패를 단계별로 계측해 해결했습니다.",
-  },
-  {
-    date: "진행 중",
-    title: "기능별 문서화",
-    desc: "구현한 기능의 트러블슈팅 과정을 문서로 남기고 있습니다.",
-  },
+  { term: "UMC 10기", role: "부회장", note: "2026.03.02 — 2026.06.23" },
 ];
 
 export const email = "tinyjbk123@gmail.com";

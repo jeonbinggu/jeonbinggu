@@ -39,16 +39,16 @@ export default function Contact() {
         <ScrollReveal>
           <LabelRow label="ACTIVITY">
             <ul>
-              {activities.map(({ date, title, desc }) => (
+              {activities.map(({ term, role, note }) => (
                 <li
-                  key={title}
-                  className="grid items-baseline gap-x-5 gap-y-1 border-b border-hairline py-[18px] md:grid-cols-[80px_1fr_1fr]"
+                  key={term}
+                  className="grid items-baseline gap-x-5 gap-y-1 border-b border-hairline py-[18px] md:grid-cols-[104px_1fr_1fr]"
                 >
                   <span className="font-mono text-[13px] text-accent">
-                    {date}
+                    {term}
                   </span>
-                  <h3 className="text-[17px]">{title}</h3>
-                  <p className="text-sm text-ink-muted text-pretty">{desc}</p>
+                  <h3 className="text-[17px]">{role}</h3>
+                  <p className="text-sm text-ink-muted text-pretty">{note}</p>
                 </li>
               ))}
             </ul>
