@@ -9,10 +9,10 @@ export default function Contact() {
       <section className="bg-accent-wash py-section">
         <div className="mx-auto max-w-page px-6 md:px-gutter">
           <ScrollReveal className="flex flex-col gap-7">
-            <SectionHead kicker="PROCESS">추측을 계측으로 바꿉니다</SectionHead>
+            <SectionHead kicker="PROCESS">문제를 좁혀 들어갑니다</SectionHead>
 
             <ol className="grid gap-4 md:grid-cols-4">
-              {process.map(({ no, title, desc }) => (
+              {process.map(({ no, title, desc, example }) => (
                 <li
                   key={no}
                   className="flex flex-col gap-2.5 border-t border-accent/30 pt-4"
@@ -23,6 +23,10 @@ export default function Contact() {
                   <h3 className="text-[17px] font-medium">{title}</h3>
                   <p className="text-[13.5px] leading-[1.7] text-ink-muted text-pretty">
                     {desc}
+                  </p>
+                  {/* 원칙 뒤에 실제 사례 한 줄. 들여쓰기 대신 색으로 구분한다 */}
+                  <p className="text-[13px] leading-[1.7] text-ink-subtle text-pretty">
+                    — {example}
                   </p>
                 </li>
               ))}
