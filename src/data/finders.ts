@@ -31,9 +31,13 @@ export const finders = {
     { label: "TEAM", value: "웹 파트 4인" },
     { label: "RELEASE", value: "Play Store · App Store" },
   ],
-  shots: ["현상소 예약 화면", "사진 피드", "마이페이지"],
+  shots: [
+    { label: "메인 화면", src: "/work/finders/main.webp" },
+    { label: "사진 피드", src: "/work/finders/feed.webp" },
+    { label: "마이페이지", src: "/work/finders/mypage.webp" },
+  ],
   overview:
-    "필름 사진을 찍는 사람이 현상소를 찾고 예약하고, 현상된 사진을 서로 나누는 서비스입니다. 웹으로 시작해 앱 출시까지 이어졌고, 지금도 운영 중입니다. 웹 파트 4인 중 한 명으로 참여했습니다.",
+    "필름 사진을 찍는 사람이 현상소를 찾고 예약하고, 현상된 사진을 서로 나누는 서비스입니다. 웹으로 시작해 앱 출시까지 이어졌고, 지금도 운영 중입니다. 웹 파트 4인 중 파트 리드로 참여했습니다.",
   scope: [
     {
       no: "01",
@@ -70,7 +74,7 @@ export const finders = {
       body: "진단 장치를 남기는 편이 낫습니다. Secret 크기와 매직 바이트를 찍던 가드를 지우지 않은 이유는, 정확히 그 정보가 없어서 하루를 헛짚었기 때문입니다.",
     },
   ],
-};
+}
 
 export const troubles = [
   {

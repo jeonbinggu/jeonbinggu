@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 import SectionHead from "./SectionHead";
@@ -33,7 +34,18 @@ export default async function Work() {
 
         <div className="mt-6 flex flex-col gap-4">
           {cases.map(
-            ({ no, kicker, title, desc, result, shot, metric, href, cta }) => (
+            ({
+              no,
+              kicker,
+              title,
+              desc,
+              result,
+              shot,
+              shotSrc,
+              metric,
+              href,
+              cta,
+            }) => (
               // 반투명 표면이라 페이드 중엔 색이 옅게 보인다. 여기는 이동만
               <ScrollReveal key={no} fade={false}>
                 <article className="glass grid items-center gap-9 rounded-case p-7 md:grid-cols-[1fr_1.15fr]">
@@ -68,9 +80,16 @@ export default async function Work() {
                     )}
                   </div>
 
-                  {/* 실제 스크린샷이 들어올 자리 */}
-                  <div className="glass shot flex aspect-[16/10] items-end rounded-shot p-3">
-                    <span className="font-mono text-[11px] text-ink-subtle">
+                  {/* 랜딩 캡처를 카드에 채운다 — 비율이 남으면 상단 기준으로 잘린다 */}
+                  <div className="glass shot relative flex aspect-[16/10] items-end overflow-hidden rounded-shot p-3">
+                    <Image
+                      src={shotSrc}
+                      alt={`${title} 랜딩 화면`}
+                      fill
+                      sizes="(min-width: 768px) 55vw, 90vw"
+                      className="object-cover object-top"
+                    />
+                    <span className="relative rounded-full bg-black/45 px-2.5 py-1 font-mono text-[11px] text-white backdrop-blur-sm">
                       {shot}
                     </span>
                   </div>

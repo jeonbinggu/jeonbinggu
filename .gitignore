@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 변환 전 원본 스크린샷 — public/work/*.webp 로 가공해서 쓴다
+/public/*.png
+!/public/jeonbyeongguk.png

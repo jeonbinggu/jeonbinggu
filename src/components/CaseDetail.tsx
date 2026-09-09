@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -13,7 +14,7 @@ export type CaseProject = {
   stack: string[];
   links: { label: string; href: string; primary?: boolean }[];
   facts: { label: string; value: string }[];
-  shots: string[];
+  shots: { label: string; src?: string }[];
   overview: string;
   scope: { no: string; title: string; desc: string }[];
   takeaways: { no: string; body: string }[];
@@ -111,15 +112,31 @@ export default function CaseDetail({
           </dl>
         </section>
 
-        {/* 실제 스크린샷이 들어올 자리 */}
+        {/* 스크린샷 3컷. src 가 없는 프로젝트는 라벨만 있는 자리표시자로 남는다 */}
         <section className="mx-auto grid max-w-page grid-cols-3 gap-3.5 px-6 pb-section md:px-gutter">
-          {shots.map((shot) => (
+          {shots.map(({ label, src }) => (
             <div
-              key={shot}
-              className="glass shot flex aspect-[9/16] items-end rounded-case p-3.5"
+              key={label}
+              className="glass shot relative flex aspect-[9/16] items-end overflow-hidden rounded-case p-3.5"
             >
-              <span className="font-mono text-[11px] text-ink-subtle">
-                {shot}
+              {src && (
+                <Image
+                  src={src}
+                  alt={`${title} ${label}`}
+                  fill
+                  sizes="(min-width: 768px) 33vw, 30vw"
+                  className="object-cover object-top"
+                />
+              )}
+              {/* 이미지 위에 얹히면 대비가 죽는다 — src 가 있을 때만 스크림을 깐다 */}
+              <span
+                className={`relative font-mono text-[11px] ${
+                  src
+                    ? "rounded-full bg-black/45 px-2.5 py-1 text-white backdrop-blur-sm"
+                    : "text-ink-subtle"
+                }`}
+              >
+                {label}
               </span>
             </div>
           ))}
