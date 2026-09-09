@@ -44,6 +44,8 @@
     0 1px 0 rgb(255 255 255 / 0.9) inset, 0 14px 30px -24px rgb(24 24 27 / 0.5);
 
   --shot-stripe: rgb(24 24 27 / 0.05);
+  /* glass 기본 테두리(흰색 0.75)는 스크린샷 위에서 사라진다 — 카드 경계용으로 따로 둔다 */
+  --shot-border: rgb(24 24 27 / 0.16);
 }
 
 [data-theme="dark"] {
@@ -76,6 +78,7 @@
     0 1px 0 rgb(255 255 255 / 0.12) inset, 0 14px 34px -26px rgb(0 0 0 / 0.9);
 
   --shot-stripe: rgb(255 255 255 / 0.06);
+  --shot-border: rgb(255 255 255 / 0.22);
 }
 
 @theme inline {
@@ -133,6 +136,8 @@
     var(--shot-stripe) 0 10px,
     transparent 10px 20px
   );
+  /* glass 뒤에 정의돼 있어야 테두리 색이 덮인다 */
+  border-color: var(--shot-border);
 }
 
 html {

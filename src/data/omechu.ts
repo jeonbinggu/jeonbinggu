@@ -30,11 +30,10 @@ export const omechu = {
     { label: "TEAM", value: "4인 · UMC 8th" },
     { label: "DEPLOY", value: "omechu.log8.kr" },
   ],
-  // 실제 스크린샷 대기 중 — src 가 없으면 라벨만 있는 플레이스홀더로 렌더된다
   shots: [
-    { label: "메인 추천 화면" },
-    { label: "온보딩 5단계" },
-    { label: "위치 기반 맛집" },
+    { label: "메인 추천 화면", src: "/work/omechu/main.webp" },
+    { label: "온보딩 5단계", src: "/work/omechu/onboarding.webp" },
+    { label: "위치 기반 맛집", src: "/work/omechu/place.webp" },
   ],
   overview:
     "무엇을 먹을지 정하지 못하는 사람에게 메뉴를 골라주고, 근처에서 그 메뉴를 파는 가게까지 이어주는 서비스입니다. 4인 팀에서 프론트엔드로 참여해 메인페이지와 추천 플로우 전체를 맡았고, 9개월 동안 구조·서버 상태·정책 세 축을 정리했습니다.",
