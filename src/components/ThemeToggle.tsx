@@ -15,7 +15,8 @@ export default function ThemeToggle() {
         el.dataset.theme = dark ? "dark" : "light";
         localStorage.setItem("theme", dark ? "dark" : "light");
       }}
-      className="hairline-pill flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-full text-xs text-ink-muted transition-colors hover:text-accent"
+      // 30px 이던 것을 탭 타깃 40px 로
+      className="hairline-pill flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-sm text-ink-muted transition-colors hover:text-accent"
     >
       <span className="dark:hidden">☾</span>
       <span className="hidden dark:inline">☀</span>

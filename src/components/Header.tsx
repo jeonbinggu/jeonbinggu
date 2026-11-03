@@ -35,26 +35,31 @@ function NavAnchor({
 export default function Header({ home = false }: { home?: boolean }) {
   return (
     <header className="glass-bar sticky top-0 z-50">
-      <div className="mx-auto flex max-w-page items-center justify-between px-6 py-[18px] md:px-gutter">
+      {/* 항목이 전부 40px 이라 세로 패딩 16px 로 헤더 72px 을 맞춘다 (scroll-padding-top 과 같은 값) */}
+      <div className="mx-auto flex max-w-page items-center justify-between gap-4 px-6 py-4 md:px-gutter">
         <NavAnchor
           home={home}
           hash="#top"
-          className="flex items-center gap-2.5 text-sm text-ink"
+          className="flex min-h-10 items-center gap-2.5 text-sm whitespace-nowrap text-ink"
         >
-          <span className="size-[9px] rounded-full bg-accent" />
+          <span className="size-[9px] shrink-0 rounded-full bg-accent" />
           <span className="font-medium">전병국</span>
-          <span className="font-mono text-ink-subtle">Frontend Developer</span>
+          {/* 390px 에서는 이름 · GitHub · 토글만 남긴다. 부제까지 두면 두 줄로 꺾인다 */}
+          <span className="hidden font-mono text-ink-subtle md:inline">
+            Frontend Developer
+          </span>
         </NavAnchor>
 
-        <nav className="flex items-center gap-[26px] text-sm text-ink-muted">
+        <nav className="flex items-center gap-3 text-sm text-ink-muted md:gap-[26px]">
           {/* 시안은 1180px 데스크톱 기준이라 좁은 폭에서는 텍스트 링크를 접는다 */}
           <div className="hidden items-center gap-[26px] md:flex">
             {navLinks.map(({ hash, label }) => (
+              // 글자는 20px 이지만 탭 타깃은 40px. 패딩으로만 키운다
               <NavAnchor
                 key={hash}
                 home={home}
                 hash={hash}
-                className="transition-colors hover:text-accent"
+                className="py-2.5 transition-colors hover:text-accent"
               >
                 {label}
               </NavAnchor>
@@ -65,7 +70,7 @@ export default function Header({ home = false }: { home?: boolean }) {
             href={githubUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="rounded-full bg-accent px-4 py-[9px] text-sm text-surface transition-opacity hover:opacity-85"
+            className="rounded-full bg-accent px-4 py-2.5 text-sm whitespace-nowrap text-surface transition-opacity hover:opacity-85"
           >
             GitHub ↗
           </a>
