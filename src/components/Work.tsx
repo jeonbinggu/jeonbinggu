@@ -82,7 +82,8 @@ export default async function Work() {
                   </div>
 
                   {/* 랜딩 캡처를 카드에 채운다 — 비율이 남으면 상단 기준으로 잘린다 */}
-                  <div className="glass shot relative flex aspect-[16/10] items-end overflow-hidden rounded-shot p-3">
+                  {/* 카드 안의 카드가 되지 않도록 glass 없이 테두리만 */}
+                  <div className="shot relative flex aspect-[16/10] items-end overflow-hidden rounded-shot border p-3">
                     <Image
                       src={shotSrc}
                       alt={`${title} 랜딩 화면`}

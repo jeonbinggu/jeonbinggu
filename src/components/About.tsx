@@ -41,13 +41,14 @@ export default function About() {
         <ScrollReveal className="flex flex-col gap-7">
           <SectionHead kicker="EXPERTISE">전문 분야와 사용 도구</SectionHead>
 
-          <ul className="grid gap-4 md:grid-cols-3">
+          <ul className="grid gap-6 md:grid-cols-3">
             {expertise.map(({ no, title, desc, tools }) => (
+              // 카드가 아니라 PROCESS 와 같은 열. glass 는 프로젝트·지표에만 쓴다
               <li
                 key={no}
-                className="glass flex flex-col gap-3 rounded-card p-[26px]"
+                className="flex flex-col gap-3 border-t border-accent/30 pt-4"
               >
-                <span className="font-mono text-xs text-accent">{no}</span>
+                <span className="font-mono text-xl text-accent">{no}</span>
                 <h3 className="text-lg font-medium tracking-heading">
                   {title}
                 </h3>

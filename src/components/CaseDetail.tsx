@@ -65,7 +65,7 @@ export default function CaseDetail({
                 {stack.map((s) => (
                   <li
                     key={s}
-                    className="glass rounded-full px-3.5 py-[7px] text-xs text-ink-muted"
+                    className="hairline-pill rounded-full px-3.5 py-[7px] text-xs text-ink-muted"
                   >
                     {s}
                   </li>
@@ -85,7 +85,7 @@ export default function CaseDetail({
                     className={
                       primary
                         ? "rounded-full bg-ink px-[22px] py-3 text-center text-sm text-surface transition-colors hover:bg-accent"
-                        : "glass rounded-full px-[22px] py-3 text-center text-sm text-ink transition-colors hover:text-accent"
+                        : "hairline-pill rounded-full px-[22px] py-3 text-center text-sm text-ink transition-colors hover:border-accent hover:text-accent"
                     }
                   >
                     {label} ↗
@@ -117,7 +117,7 @@ export default function CaseDetail({
           {shots.map(({ label, src }) => (
             <div
               key={label}
-              className="glass shot relative flex aspect-[9/16] items-end overflow-hidden rounded-case p-3.5"
+              className="shot relative flex aspect-[9/16] items-end overflow-hidden rounded-case border p-3.5"
             >
               {src && (
                 <Image
@@ -154,11 +154,11 @@ export default function CaseDetail({
                   <p className="font-mono text-xs tracking-[0.08em] text-ink-subtle">
                     MY SCOPE
                   </p>
-                  <ul className="grid gap-3.5 md:grid-cols-2">
+                  <ul className="grid gap-x-8 gap-y-6 md:grid-cols-2">
                     {scope.map(({ no: n, title: t, desc }) => (
                       <li
                         key={n}
-                        className="glass flex flex-col gap-2.5 rounded-card p-6"
+                        className="flex flex-col gap-2.5 border-t border-accent/30 pt-4"
                       >
                         <span className="font-mono text-xs text-accent">
                           {n}

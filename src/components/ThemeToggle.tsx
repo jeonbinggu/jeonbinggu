@@ -15,7 +15,7 @@ export default function ThemeToggle() {
         el.dataset.theme = dark ? "dark" : "light";
         localStorage.setItem("theme", dark ? "dark" : "light");
       }}
-      className="glass flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-full text-xs text-ink-muted transition-colors hover:text-accent"
+      className="hairline-pill flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-full text-xs text-ink-muted transition-colors hover:text-accent"
     >
       <span className="dark:hidden">☾</span>
       <span className="hidden dark:inline">☀</span>

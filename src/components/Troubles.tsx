@@ -41,7 +41,7 @@ export default function Troubles({
         <button
           type="button"
           onClick={() => setOpen(anyOpen ? [] : items.map((_, i) => i))}
-          className="glass shrink-0 rounded-full px-4 py-[9px] text-xs text-ink-muted transition-colors hover:text-accent"
+          className="hairline-pill shrink-0 rounded-full px-4 py-[9px] text-xs text-ink-muted transition-colors hover:border-accent hover:text-accent"
         >
           {anyOpen ? "모두 접기" : "모두 펼치기"}
         </button>
@@ -74,7 +74,7 @@ export default function Troubles({
 
                 <span
                   aria-hidden
-                  className="glass flex size-8 items-center justify-center rounded-full text-sm text-ink-muted"
+                  className="hairline-pill flex size-8 items-center justify-center rounded-full text-sm text-ink-muted"
                 >
                   {isOpen ? "−" : "+"}
                 </span>
