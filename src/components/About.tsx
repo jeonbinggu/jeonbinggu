@@ -1,6 +1,6 @@
 import ScrollReveal from "./ScrollReveal";
 import SectionHead, { LabelRow } from "./SectionHead";
-import { expertise } from "@/data/profile";
+import { activities, expertise } from "@/data/profile";
 
 export default function About() {
   return (
@@ -32,6 +32,20 @@ export default function About() {
                 회귀 테스트를 남기고, 다음 사람이 같은 벽에 부딪힐 지점에는 진단
                 로그를 지우지 않고 둡니다.
               </p>
+
+              {/* 동아리 이력. 독립 섹션으로 두기엔 세 줄이라 소개 아래 작은 표로 */}
+              <ul className="mt-4 border-t border-hairline">
+                {activities.map(({ term, role, note }) => (
+                  <li
+                    key={term}
+                    className="grid items-baseline gap-x-5 gap-y-1 border-b border-hairline py-3 text-sm md:grid-cols-[88px_1fr_1.3fr]"
+                  >
+                    <span className="text-accent">{term}</span>
+                    <span>{role}</span>
+                    <span className="text-ink-muted text-pretty">{note}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </LabelRow>
         </ScrollReveal>

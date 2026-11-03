@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 import SectionHead from "./SectionHead";
-import { cases, email, githubUrl } from "@/data/profile";
+import { cases, githubUrl } from "@/data/profile";
 import { commitLabel, formatCount, getGithubData } from "@/lib/github";
 
 const ctaClass =
@@ -129,19 +129,6 @@ export default async function Work() {
               </div>
             ))}
           </dl>
-
-          {/* glass 유틸은 배경색까지 잡아버려서, tint 를 얹는 배너는 테두리·그림자만 빌려 쓴다 */}
-          <div className="flex flex-wrap items-center justify-between gap-6 rounded-[24px] border border-[var(--glass-border)] bg-accent-veil p-7 shadow-[var(--glass-shadow)] backdrop-blur-[18px] md:px-8">
-            <p className="text-xl font-light tracking-heading text-pretty">
-              이력서와 프로젝트 상세 자료를 바로 보내드립니다.
-            </p>
-            <a
-              href={`mailto:${email}?subject=${encodeURIComponent("이력서 요청")}`}
-              className="shrink-0 rounded-full bg-ink px-[22px] py-3 text-sm text-surface transition-colors hover:bg-accent"
-            >
-              이력서 요청하기
-            </a>
-          </div>
         </ScrollReveal>
       </section>
     </>

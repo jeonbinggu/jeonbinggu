@@ -1,8 +1,8 @@
 import About from "@/components/About";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Process from "@/components/Process";
 import Work from "@/components/Work";
 
 export default function Home() {
@@ -16,9 +16,10 @@ export default function Home() {
         <Hero />
         <About />
         <Work />
-        <Contact />
+        <Process />
       </main>
 
+      {/* CONTACT 는 푸터가 맡는다 (id="contact") */}
       <Footer />
     </>
   );
