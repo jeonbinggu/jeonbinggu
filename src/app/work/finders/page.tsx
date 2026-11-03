@@ -4,7 +4,7 @@ import { finders, troubles } from "@/data/finders";
 import { commitLabel, getGithubData } from "@/lib/github";
 
 export const metadata: Metadata = {
-  title: "Finders — 전병국",
+  title: "Finders",
   description: finders.lead,
 };
 

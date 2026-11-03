@@ -27,7 +27,7 @@ export default function Hero() {
             {chips.map((chip) => (
               <li
                 key={chip}
-                className="glass rounded-full px-[13px] py-1.5 font-mono text-xs text-ink-muted"
+                className="hairline-pill rounded-full px-[13px] py-1.5 text-xs text-ink-muted"
               >
                 {chip}
               </li>
@@ -43,7 +43,7 @@ export default function Hero() {
             </a>
             <a
               href="#contact"
-              className="glass rounded-full px-[22px] py-3 text-sm text-ink transition-colors hover:text-accent"
+              className="hairline-pill rounded-full px-[22px] py-3 text-sm text-ink transition-colors hover:border-accent hover:text-accent"
             >
               연락하기 →
             </a>

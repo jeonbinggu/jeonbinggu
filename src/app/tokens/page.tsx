@@ -32,7 +32,7 @@ export default function TokensPage() {
               <div
                 className={`${c} h-16 w-32 rounded-card border border-hairline`}
               />
-              <span className="font-mono text-[11px] text-ink-subtle">{c}</span>
+              <span className="font-mono text-xs text-ink-subtle">{c}</span>
             </div>
           ))}
         </div>
@@ -68,7 +68,7 @@ export default function TokensPage() {
           {radii.map((r) => (
             <div
               key={r}
-              className={`glass ${r} flex h-32 w-52 items-end p-4 font-mono text-[11px] text-ink-muted`}
+              className={`glass ${r} flex h-32 w-52 items-end p-4 font-mono text-xs text-ink-muted`}
             >
               {r}
             </div>
@@ -78,7 +78,7 @@ export default function TokensPage() {
 
       <Group label="SPACING">
         <div className="bg-accent-wash py-section">
-          <div className="bg-accent/20 px-gutter py-2 font-mono text-[11px] text-ink-muted">
+          <div className="bg-accent/20 px-gutter py-2 font-mono text-xs text-ink-muted">
             py-section (84px) · px-gutter (56px)
           </div>
         </div>
@@ -96,7 +96,7 @@ function Group({
 }) {
   return (
     <section className="mb-14 flex flex-col gap-4 border-t border-hairline pt-6">
-      <div className="font-mono text-[11px] tracking-[0.1em] text-ink-subtle">
+      <div className="font-mono text-xs tracking-[0.1em] text-ink-subtle">
         {label}
       </div>
       {children}

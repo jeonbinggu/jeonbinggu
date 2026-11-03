@@ -41,7 +41,7 @@ export default function Troubles({
         <button
           type="button"
           onClick={() => setOpen(anyOpen ? [] : items.map((_, i) => i))}
-          className="glass shrink-0 rounded-full px-4 py-[9px] font-mono text-xs text-ink-muted transition-colors hover:text-accent"
+          className="hairline-pill shrink-0 rounded-full px-4 py-[9px] text-xs text-ink-muted transition-colors hover:border-accent hover:text-accent"
         >
           {anyOpen ? "모두 접기" : "모두 펼치기"}
         </button>
@@ -61,20 +61,20 @@ export default function Troubles({
                 aria-controls={panelId}
                 className="grid w-full grid-cols-[28px_1fr_32px] items-center gap-4 p-6 text-left md:grid-cols-[40px_1fr_32px] md:gap-5 md:px-7"
               >
-                <span className="font-mono text-[13px] text-accent">{no}</span>
+                <span className="font-mono text-sm text-accent">{no}</span>
 
                 <span className="flex min-w-0 flex-col gap-1.5">
-                  <span className="text-[17px] leading-[1.35] tracking-heading text-pretty md:text-xl">
+                  <span className="text-lg leading-[1.35] tracking-heading text-pretty md:text-xl">
                     {title}
                   </span>
-                  <span className="font-mono text-[11.5px] text-ink-subtle">
+                  <span className="font-mono text-xs text-ink-subtle">
                     {tag}
                   </span>
                 </span>
 
                 <span
                   aria-hidden
-                  className="glass flex size-8 items-center justify-center rounded-full text-[15px] text-ink-muted"
+                  className="hairline-pill flex size-8 items-center justify-center rounded-full text-sm text-ink-muted"
                 >
                   {isOpen ? "−" : "+"}
                 </span>
@@ -90,18 +90,19 @@ export default function Troubles({
                       key={label}
                       className="grid gap-2 pt-5 md:grid-cols-[84px_1fr] md:gap-5"
                     >
-                      <p className="font-mono text-[11px] tracking-[0.08em] text-accent md:pt-1">
+                      {/* 증상·원인·해결 같은 한글 라벨이라 모노를 쓰지 않는다 */}
+                      <p className="text-xs font-medium text-accent md:pt-1">
                         {label}
                       </p>
                       {/* 본문에 \n\n 로 문단을 나눠 두었다 */}
-                      <p className="max-w-[62ch] text-[15px] leading-[1.78] whitespace-pre-line text-ink-muted text-pretty">
+                      <p className="max-w-[62ch] text-base leading-[1.78] whitespace-pre-line text-ink-muted text-pretty">
                         {body}
                       </p>
                     </div>
                   ))}
 
                   {code && (
-                    <pre className="max-w-full overflow-x-auto rounded-shot bg-ink/[0.045] p-5 font-mono text-[12.5px] leading-[1.7] text-ink">
+                    <pre className="max-w-full overflow-x-auto rounded-shot bg-ink/[0.045] p-5 font-mono text-xs leading-[1.7] text-ink">
                       {code}
                     </pre>
                   )}

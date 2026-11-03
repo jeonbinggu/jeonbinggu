@@ -6,20 +6,18 @@
 
 /* 테마별로 값이 바뀌는 토큰. @theme inline 이 var() 를 그대로 참조한다 */
 :root {
-  /* glass 가 굴절시킬 게 있어야 표면이 보인다. 단색 배경이면 backdrop-filter 가 무의미 */
-  --surface-page: linear-gradient(
-    180deg,
-    #f7f7fa 0%,
-    #e9ebf4 44%,
-    #f2f2f6 100%
-  );
-  /* 그라디언트 최상단 색. sticky 헤더의 color-mix 와 버튼 대비색이 이 값을 쓴다 */
+  /* 배경은 단색 하나. 그라디언트 + PROCESS wash + 푸터가 회색 3단으로 겹쳐 보여 걷어냈다.
+     glass 는 프로젝트·지표 카드에만 남아 있어 border·shadow 만으로 충분히 선다.
+     sticky 헤더의 color-mix 와 버튼 대비색이 이 값을 쓴다 */
   --surface: #f7f7fa;
-  /* 그라디언트 최하단(#f2f2f6)보다 한 단계 진하게. 푸터가 본문에서 떨어져 보이는 최소치 */
+  /* 본문보다 한 단계 진하게. CONTACT 를 맡는 푸터가 본문에서 떨어져 보이는 최소치 */
   --surface-footer: #e7e9f1;
   --ink: #18181b;
-  --ink-muted: #71717a;
-  --ink-subtle: #a1a1aa;
+  /* 시안의 #71717a / #a1a1aa 는 #f7f7fa 위에서 4.52 / 2.40 으로 AA 경계·미달.
+     subtle 은 12px 라벨에만 쓰여 4.5:1 이 꼭 필요하다. 세 단계 모두 5:1 이상으로 맞추되
+     ink → muted → subtle 순서는 유지한다 (#f7f7fa 기준 16.6 / 7.2 / 5.6) */
+  --ink-muted: #52525b;
+  --ink-subtle: #63636b;
   /* 시안은 0.58 이지만 #fbfbfa 대비 4.3:1 로 12~14px 텍스트가 AA 미달.
      시안이 작은 라벨에 쓰던 0.5 로 통일 (약 6:1) */
   --accent: oklch(0.5 0.075 262);
@@ -49,17 +47,12 @@
 }
 
 [data-theme="dark"] {
-  --surface-page: linear-gradient(
-    180deg,
-    #08080a 0%,
-    #12121c 44%,
-    #0a0a0e 100%
-  );
   --surface: #08080a;
   --surface-footer: #131316;
   --ink: #f4f4f5;
   --ink-muted: #a1a1aa;
-  --ink-subtle: #71717a;
+  /* #71717a 는 #12121c 위에서 3.85 로 미달. 6:1 이 나오는 값으로 */
+  --ink-subtle: #8e8e97;
   --accent: oklch(0.82 0.07 262);
   --accent-dim: oklch(0.78 0.075 262);
   --accent-wash: oklch(0.62 0.075 262 / 0.13);
@@ -93,14 +86,22 @@
   --color-accent-veil: var(--accent-veil);
   --color-hairline: var(--hairline);
 
-  --font-sans: var(--font-geist-sans);
+  /* 라틴은 Geist, 한글은 Pretendard. 폰트 폴백은 글자 단위로 일어나므로
+     Geist(와 그 폴백 Arial)에 없는 한글만 Pretendard 로 넘어간다.
+     모노는 영문 키커·숫자·URL·코드에만 쓴다 — 한글이 들어가는 라벨은 sans */
+  --font-sans:
+    var(--font-geist-sans), "Pretendard Variable", ui-sans-serif, system-ui,
+    sans-serif;
   --font-mono: var(--font-geist-mono);
 
-  /* 시안은 1180px 고정폭이라 그대로 쓰면 모바일이 깨진다. 상한을 시안 값으로 두고 clamp */
+  /* 타입 스케일은 9단계로 고정한다 — Tailwind 기본 xs·sm·base·lg·xl·2xl·3xl(12~30px)
+     위에 아래 네 토큰만 얹는다. 컴포넌트에서 text-[Npx] 임의값은 쓰지 않는다.
+     시안은 1180px 고정폭이라 그대로 쓰면 모바일이 깨진다. 상한을 두고 clamp */
   --text-display: clamp(2.5rem, 6vw, 3.875rem); /* → 62px */
   --text-title: clamp(2rem, 4.5vw, 2.875rem); /* → 46px */
-  --text-lead: clamp(1.5rem, 3vw, 2rem); /* → 32px */
-  --text-section: clamp(1.375rem, 2.5vw, 1.625rem); /* → 26px */
+  /* lead 와 section 의 상한은 3xl(30)·2xl(24)과 같은 값. 큰 화면에서 단계가 늘지 않도록 */
+  --text-lead: clamp(1.5rem, 3vw, 1.875rem); /* → 30px */
+  --text-section: clamp(1.375rem, 2.5vw, 1.5rem); /* → 24px */
 
   --tracking-display: -0.035em;
   --tracking-heading: -0.02em;
@@ -120,6 +121,13 @@
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
   backdrop-filter: blur(20px) saturate(1.6);
+}
+
+/* glass 를 뺀 칩·보조 버튼·토글. 반투명·blur·그림자 없이 선 하나로 경계를 만든다.
+   glass 는 "이 페이지에서 가장 중요한 것" — 프로젝트 카드와 지표 카드 — 에만 남긴다 */
+@utility hairline-pill {
+  border: 1px solid var(--hairline);
+  background-color: transparent;
 }
 
 @utility glass-bar {
@@ -143,11 +151,9 @@
 html {
   /* sticky 헤더 높이만큼. 앵커 이동 시 제목이 헤더 밑에 깔리지 않도록 */
   scroll-padding-top: 72px;
-  /* 그라디언트는 body 박스에만 칠해지므로 오버스크롤 여백은 html 이 받는다 */
   background: var(--surface);
 }
 
 body {
-  background: var(--surface-page);
   color: var(--ink);
 }

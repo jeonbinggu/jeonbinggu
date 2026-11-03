@@ -1,6 +1,6 @@
 import ScrollReveal from "./ScrollReveal";
 import SectionHead, { LabelRow } from "./SectionHead";
-import { expertise } from "@/data/profile";
+import { activities, expertise } from "@/data/profile";
 
 export default function About() {
   return (
@@ -32,6 +32,20 @@ export default function About() {
                 회귀 테스트를 남기고, 다음 사람이 같은 벽에 부딪힐 지점에는 진단
                 로그를 지우지 않고 둡니다.
               </p>
+
+              {/* 동아리 이력. 독립 섹션으로 두기엔 세 줄이라 소개 아래 작은 표로 */}
+              <ul className="mt-4 border-t border-hairline">
+                {activities.map(({ term, role, note }) => (
+                  <li
+                    key={term}
+                    className="grid items-baseline gap-x-5 gap-y-1 border-b border-hairline py-3 text-sm md:grid-cols-[88px_1fr_1.3fr]"
+                  >
+                    <span className="text-accent">{term}</span>
+                    <span>{role}</span>
+                    <span className="text-ink-muted text-pretty">{note}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </LabelRow>
         </ScrollReveal>
@@ -41,20 +55,21 @@ export default function About() {
         <ScrollReveal className="flex flex-col gap-7">
           <SectionHead kicker="EXPERTISE">전문 분야와 사용 도구</SectionHead>
 
-          <ul className="grid gap-4 md:grid-cols-3">
+          <ul className="grid gap-6 md:grid-cols-3">
             {expertise.map(({ no, title, desc, tools }) => (
+              // 카드가 아니라 PROCESS 와 같은 열. glass 는 프로젝트·지표에만 쓴다
               <li
                 key={no}
-                className="glass flex flex-col gap-3 rounded-card p-[26px]"
+                className="flex flex-col gap-3 border-t border-accent/30 pt-4"
               >
-                <span className="font-mono text-xs text-accent">{no}</span>
-                <h3 className="text-[19px] font-medium tracking-heading">
+                <span className="font-mono text-xl text-accent">{no}</span>
+                <h3 className="text-lg font-medium tracking-heading">
                   {title}
                 </h3>
                 <p className="text-sm leading-[1.7] text-ink-muted text-pretty">
                   {desc}
                 </p>
-                <p className="mt-auto pt-1 font-mono text-[11px] text-ink-subtle">
+                <p className="mt-auto pt-1 font-mono text-xs text-ink-subtle">
                   {tools}
                 </p>
               </li>

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
+// Geist 는 라틴만 담고 있어 한글은 OS 기본 폰트로 떨어졌다. 한글은 Pretendard 가 받는다.
+// 2MB 짜리 전체 파일 대신 unicode-range 로 92조각 낸 dynamic subset 을 쓴다 —
+// 페이지에 실제로 쓰인 글자가 속한 조각만 내려받는다 (랜딩 기준 19조각 · 약 480KB)
+import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,9 +17,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://jeonbinggu.vercel.app";
+const DESCRIPTION =
+  "React 단일 코드베이스를 Capacitor로 패키징해 웹과 Android·iOS에 출시하고 운영하는 프론트엔드 개발자 전병국의 포트폴리오.";
+
+// 탭과 공유 링크에 이름이 나오도록. 상세 페이지는 template 으로 "Finders — 전병국" 이 된다
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Personal portfolio website",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "전병국 · Frontend Developer",
+    template: "%s — 전병국",
+  },
+  description: DESCRIPTION,
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    siteName: "전병국 · Frontend Developer",
+    title: "전병국 · Frontend Developer",
+    description: DESCRIPTION,
+  },
 };
 
 // body 첫 자식으로 동기 실행돼 페인트 전에 테마가 확정된다 (FOUC 방지).
