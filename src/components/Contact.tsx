@@ -17,15 +17,15 @@ export default function Contact() {
                   key={no}
                   className="flex flex-col gap-2.5 border-t border-accent/30 pt-4"
                 >
-                  <span className="font-mono text-[22px] text-accent">
+                  <span className="font-mono text-xl text-accent">
                     {no}
                   </span>
-                  <h3 className="text-[17px] font-medium">{title}</h3>
-                  <p className="text-[13.5px] leading-[1.7] text-ink-muted text-pretty">
+                  <h3 className="text-lg font-medium">{title}</h3>
+                  <p className="text-sm leading-[1.7] text-ink-muted text-pretty">
                     {desc}
                   </p>
                   {/* 원칙 뒤에 실제 사례 한 줄. 들여쓰기 대신 색으로 구분한다 */}
-                  <p className="text-[13px] leading-[1.7] text-ink-subtle text-pretty">
+                  <p className="text-sm leading-[1.7] text-ink-subtle text-pretty">
                     — {example}
                   </p>
                 </li>
@@ -44,10 +44,10 @@ export default function Contact() {
                   key={term}
                   className="grid items-baseline gap-x-5 gap-y-1 border-b border-hairline py-[18px] md:grid-cols-[104px_1fr_1fr]"
                 >
-                  <span className="font-mono text-[13px] text-accent">
+                  <span className="font-mono text-sm text-accent">
                     {term}
                   </span>
-                  <h3 className="text-[17px]">{role}</h3>
+                  <h3 className="text-lg">{role}</h3>
                   <p className="text-sm text-ink-muted text-pretty">{note}</p>
                 </li>
               ))}

@@ -65,7 +65,7 @@ export default function Header({ home = false }: { home?: boolean }) {
             href={githubUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="rounded-full bg-accent px-4 py-[9px] text-[13px] text-surface transition-opacity hover:opacity-85"
+            className="rounded-full bg-accent px-4 py-[9px] text-sm text-surface transition-opacity hover:opacity-85"
           >
             GitHub ↗
           </a>

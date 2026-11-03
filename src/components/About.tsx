@@ -48,13 +48,13 @@ export default function About() {
                 className="glass flex flex-col gap-3 rounded-card p-[26px]"
               >
                 <span className="font-mono text-xs text-accent">{no}</span>
-                <h3 className="text-[19px] font-medium tracking-heading">
+                <h3 className="text-lg font-medium tracking-heading">
                   {title}
                 </h3>
                 <p className="text-sm leading-[1.7] text-ink-muted text-pretty">
                   {desc}
                 </p>
-                <p className="mt-auto pt-1 font-mono text-[11px] text-ink-subtle">
+                <p className="mt-auto pt-1 font-mono text-xs text-ink-subtle">
                   {tools}
                 </p>
               </li>

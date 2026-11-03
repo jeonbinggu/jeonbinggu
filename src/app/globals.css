@@ -96,11 +96,14 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* 시안은 1180px 고정폭이라 그대로 쓰면 모바일이 깨진다. 상한을 시안 값으로 두고 clamp */
+  /* 타입 스케일은 9단계로 고정한다 — Tailwind 기본 xs·sm·base·lg·xl·2xl·3xl(12~30px)
+     위에 아래 네 토큰만 얹는다. 컴포넌트에서 text-[Npx] 임의값은 쓰지 않는다.
+     시안은 1180px 고정폭이라 그대로 쓰면 모바일이 깨진다. 상한을 두고 clamp */
   --text-display: clamp(2.5rem, 6vw, 3.875rem); /* → 62px */
   --text-title: clamp(2rem, 4.5vw, 2.875rem); /* → 46px */
-  --text-lead: clamp(1.5rem, 3vw, 2rem); /* → 32px */
-  --text-section: clamp(1.375rem, 2.5vw, 1.625rem); /* → 26px */
+  /* lead 와 section 의 상한은 3xl(30)·2xl(24)과 같은 값. 큰 화면에서 단계가 늘지 않도록 */
+  --text-lead: clamp(1.5rem, 3vw, 1.875rem); /* → 30px */
+  --text-section: clamp(1.375rem, 2.5vw, 1.5rem); /* → 24px */
 
   --tracking-display: -0.035em;
   --tracking-heading: -0.02em;

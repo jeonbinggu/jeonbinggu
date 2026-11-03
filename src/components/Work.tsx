@@ -6,7 +6,7 @@ import { cases, email, githubUrl } from "@/data/profile";
 import { commitLabel, formatCount, getGithubData } from "@/lib/github";
 
 const ctaClass =
-  "mt-1 w-fit rounded-full bg-ink px-[18px] py-2.5 text-[13px] text-surface transition-colors hover:bg-accent";
+  "mt-1 w-fit rounded-full bg-ink px-[18px] py-2.5 text-sm text-surface transition-colors hover:bg-accent";
 
 export default async function Work() {
   const gh = await getGithubData();
@@ -54,13 +54,13 @@ export default async function Work() {
                       <span>{no}</span>
                       <span>{kicker}</span>
                     </p>
-                    <h3 className="text-2xl font-normal tracking-[-0.025em] md:text-[30px]">
+                    <h3 className="text-2xl font-normal tracking-[-0.025em] md:text-3xl">
                       {title}
                     </h3>
-                    <p className="text-[15px] leading-[1.7] text-ink-muted text-pretty">
+                    <p className="text-base leading-[1.7] text-ink-muted text-pretty">
                       {desc}
                     </p>
-                    <p className="font-mono text-[13px] text-accent">
+                    <p className="font-mono text-sm text-accent">
                       {commitLabel(gh[metric])} · {result}
                     </p>
                     {/* 내부 경로는 Link 여야 프리페치되고 전체 새로고침 없이 넘어간다 */}
@@ -89,7 +89,7 @@ export default async function Work() {
                       sizes="(min-width: 768px) 55vw, 90vw"
                       className="object-cover object-top"
                     />
-                    <span className="relative rounded-full bg-black/45 px-2.5 py-1 font-mono text-[11px] text-white backdrop-blur-sm">
+                    <span className="relative rounded-full bg-black/45 px-2.5 py-1 font-mono text-xs text-white backdrop-blur-sm">
                       {shot}
                     </span>
                   </div>
@@ -108,7 +108,7 @@ export default async function Work() {
               href={githubUrl}
               target="_blank"
               rel="noreferrer noopener"
-              className="font-mono text-[13px] text-accent transition-opacity hover:opacity-70"
+              className="font-mono text-sm text-accent transition-opacity hover:opacity-70"
             >
               github.com/jeonbinggu ↗
             </a>
@@ -118,10 +118,10 @@ export default async function Work() {
             {stats.map(({ value, label }) => (
               <div key={label} className="glass rounded-card p-6">
                 <dt className="sr-only">{label}</dt>
-                <dd className="text-[30px] leading-none font-light tracking-[-0.03em]">
+                <dd className="text-3xl leading-none font-light tracking-[-0.03em]">
                   {value}
                 </dd>
-                <p className="mt-2 font-mono text-[11.5px] text-ink-subtle">
+                <p className="mt-2 font-mono text-xs text-ink-subtle">
                   {label}
                 </p>
               </div>

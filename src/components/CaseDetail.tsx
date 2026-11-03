@@ -65,7 +65,7 @@ export default function CaseDetail({
                 {stack.map((s) => (
                   <li
                     key={s}
-                    className="glass rounded-full px-3.5 py-[7px] font-mono text-[12.5px] text-ink-muted"
+                    className="glass rounded-full px-3.5 py-[7px] font-mono text-xs text-ink-muted"
                   >
                     {s}
                   </li>
@@ -101,10 +101,10 @@ export default function CaseDetail({
                 key={label}
                 className="glass flex flex-col gap-2 rounded-card px-6 py-[22px]"
               >
-                <dt className="font-mono text-[11px] tracking-[0.08em] text-accent">
+                <dt className="font-mono text-xs tracking-[0.08em] text-accent">
                   {label}
                 </dt>
-                <dd className="text-[19px] leading-[1.35] font-light tracking-heading">
+                <dd className="text-lg leading-[1.35] font-light tracking-heading">
                   {value}
                 </dd>
               </div>
@@ -130,7 +130,7 @@ export default function CaseDetail({
               )}
               {/* 이미지 위에 얹히면 대비가 죽는다 — src 가 있을 때만 스크림을 깐다 */}
               <span
-                className={`relative font-mono text-[11px] ${
+                className={`relative font-mono text-xs ${
                   src
                     ? "rounded-full bg-black/45 px-2.5 py-1 text-white backdrop-blur-sm"
                     : "text-ink-subtle"
@@ -146,12 +146,12 @@ export default function CaseDetail({
           <ScrollReveal>
             <LabelRow label="OVERVIEW">
               <div className="flex flex-col gap-[34px]">
-                <p className="max-w-[60ch] text-[19px] leading-[1.72] font-light tracking-[-0.01em] text-pretty">
+                <p className="max-w-[60ch] text-xl leading-[1.72] font-light tracking-[-0.01em] text-pretty">
                   {overview}
                 </p>
 
                 <div className="flex flex-col gap-4">
-                  <p className="font-mono text-[11.5px] tracking-[0.08em] text-ink-subtle">
+                  <p className="font-mono text-xs tracking-[0.08em] text-ink-subtle">
                     MY SCOPE
                   </p>
                   <ul className="grid gap-3.5 md:grid-cols-2">
@@ -192,7 +192,7 @@ export default function CaseDetail({
                       key={n}
                       className="grid gap-3 border-b border-accent/30 pb-[18px] md:grid-cols-[28px_1fr] md:gap-[18px]"
                     >
-                      <span className="font-mono text-[13px] text-accent">
+                      <span className="font-mono text-sm text-accent">
                         {n}
                       </span>
                       <p className="max-w-[58ch] text-lg leading-[1.68] font-light tracking-[-0.01em] text-pretty">
@@ -209,7 +209,7 @@ export default function CaseDetail({
         <section className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-6 px-6 py-10 md:px-gutter">
           <Link
             href="/#work"
-            className="font-mono text-[13px] text-accent transition-opacity hover:opacity-70"
+            className="font-mono text-sm text-accent transition-opacity hover:opacity-70"
           >
             ← 프로젝트 목록
           </Link>
@@ -218,10 +218,10 @@ export default function CaseDetail({
             href={next.href}
             className="flex flex-col items-end gap-1.5 transition-opacity hover:opacity-70"
           >
-            <span className="font-mono text-[11px] tracking-[0.08em] text-ink-subtle">
+            <span className="font-mono text-xs tracking-[0.08em] text-ink-subtle">
               NEXT
             </span>
-            <span className="text-[22px] font-light tracking-display">
+            <span className="text-2xl font-light tracking-display">
               {next.title} →
             </span>
           </Link>
