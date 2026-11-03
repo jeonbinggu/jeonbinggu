@@ -6,19 +6,14 @@
 
 /* 테마별로 값이 바뀌는 토큰. @theme inline 이 var() 를 그대로 참조한다 */
 :root {
-  /* glass 가 굴절시킬 게 있어야 표면이 보인다. 단색 배경이면 backdrop-filter 가 무의미 */
-  --surface-page: linear-gradient(
-    180deg,
-    #f7f7fa 0%,
-    #e9ebf4 44%,
-    #f2f2f6 100%
-  );
-  /* 그라디언트 최상단 색. sticky 헤더의 color-mix 와 버튼 대비색이 이 값을 쓴다 */
+  /* 배경은 단색 하나. 그라디언트 + PROCESS wash + 푸터가 회색 3단으로 겹쳐 보여 걷어냈다.
+     glass 는 프로젝트·지표 카드에만 남아 있어 border·shadow 만으로 충분히 선다.
+     sticky 헤더의 color-mix 와 버튼 대비색이 이 값을 쓴다 */
   --surface: #f7f7fa;
-  /* 그라디언트 최하단(#f2f2f6)보다 한 단계 진하게. 푸터가 본문에서 떨어져 보이는 최소치 */
+  /* 본문보다 한 단계 진하게. CONTACT 를 맡는 푸터가 본문에서 떨어져 보이는 최소치 */
   --surface-footer: #e7e9f1;
   --ink: #18181b;
-  /* 시안의 #71717a / #a1a1aa 는 그라디언트 중간(#e9ebf4) 위에서 4.06 / 2.15 로 AA 미달.
+  /* 시안의 #71717a / #a1a1aa 는 #f7f7fa 위에서 4.52 / 2.40 으로 AA 경계·미달.
      subtle 은 12px 라벨에만 쓰여 4.5:1 이 꼭 필요하다. 세 단계 모두 5:1 이상으로 맞추되
      ink → muted → subtle 순서는 유지한다 (#f7f7fa 기준 16.6 / 7.2 / 5.6) */
   --ink-muted: #52525b;
@@ -52,12 +47,6 @@
 }
 
 [data-theme="dark"] {
-  --surface-page: linear-gradient(
-    180deg,
-    #08080a 0%,
-    #12121c 44%,
-    #0a0a0e 100%
-  );
   --surface: #08080a;
   --surface-footer: #131316;
   --ink: #f4f4f5;
@@ -162,11 +151,9 @@
 html {
   /* sticky 헤더 높이만큼. 앵커 이동 시 제목이 헤더 밑에 깔리지 않도록 */
   scroll-padding-top: 72px;
-  /* 그라디언트는 body 박스에만 칠해지므로 오버스크롤 여백은 html 이 받는다 */
   background: var(--surface);
 }
 
 body {
-  background: var(--surface-page);
   color: var(--ink);
 }
