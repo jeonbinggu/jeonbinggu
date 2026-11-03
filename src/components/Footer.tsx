@@ -15,7 +15,7 @@ export default function Footer() {
 
         <a
           href={`mailto:${email}`}
-          className="w-fit font-mono text-xl text-accent transition-opacity hover:opacity-70"
+          className="-my-1.5 w-fit py-1.5 font-mono text-xl text-accent transition-opacity hover:opacity-70"
         >
           {email}
         </a>
@@ -35,7 +35,7 @@ export default function Footer() {
                 {...(href.startsWith("http")
                   ? { target: "_blank", rel: "noreferrer noopener" }
                   : {})}
-                className="mt-1 w-fit text-sm text-accent transition-opacity hover:opacity-70"
+                className="-my-2.5 mt-1 w-fit py-2.5 text-sm text-accent transition-opacity hover:opacity-70"
               >
                 {cta} →
               </a>
@@ -48,11 +48,12 @@ export default function Footer() {
           <ul className="flex gap-[18px] font-mono">
             {socials.map(({ label, href }) => (
               <li key={label}>
+                {/* 16px 글자에 탭 타깃 40px. 음수 마진으로 줄 높이는 그대로 */}
                 <a
                   href={href}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="transition-colors hover:text-accent"
+                  className="-my-3 inline-block py-3 transition-colors hover:text-accent"
                 >
                   {label}
                 </a>

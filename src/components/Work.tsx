@@ -110,7 +110,7 @@ export default async function Work() {
               href={githubUrl}
               target="_blank"
               rel="noreferrer noopener"
-              className="font-mono text-sm text-accent transition-opacity hover:opacity-70"
+              className="-my-2.5 py-2.5 font-mono text-sm text-accent transition-opacity hover:opacity-70"
             >
               github.com/jeonbinggu ↗
             </a>

@@ -4,7 +4,7 @@ import { omechu, omechuTroubles } from "@/data/omechu";
 import { commitLabel, getGithubData } from "@/lib/github";
 
 export const metadata: Metadata = {
-  title: "오메추 — 전병국",
+  title: "오메추",
   description: omechu.lead,
 };
 
