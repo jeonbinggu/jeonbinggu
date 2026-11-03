@@ -18,8 +18,11 @@
   /* 그라디언트 최하단(#f2f2f6)보다 한 단계 진하게. 푸터가 본문에서 떨어져 보이는 최소치 */
   --surface-footer: #e7e9f1;
   --ink: #18181b;
-  --ink-muted: #71717a;
-  --ink-subtle: #a1a1aa;
+  /* 시안의 #71717a / #a1a1aa 는 그라디언트 중간(#e9ebf4) 위에서 4.06 / 2.15 로 AA 미달.
+     subtle 은 12px 라벨에만 쓰여 4.5:1 이 꼭 필요하다. 세 단계 모두 5:1 이상으로 맞추되
+     ink → muted → subtle 순서는 유지한다 (#f7f7fa 기준 16.6 / 7.2 / 5.6) */
+  --ink-muted: #52525b;
+  --ink-subtle: #63636b;
   /* 시안은 0.58 이지만 #fbfbfa 대비 4.3:1 로 12~14px 텍스트가 AA 미달.
      시안이 작은 라벨에 쓰던 0.5 로 통일 (약 6:1) */
   --accent: oklch(0.5 0.075 262);
@@ -59,7 +62,8 @@
   --surface-footer: #131316;
   --ink: #f4f4f5;
   --ink-muted: #a1a1aa;
-  --ink-subtle: #71717a;
+  /* #71717a 는 #12121c 위에서 3.85 로 미달. 6:1 이 나오는 값으로 */
+  --ink-subtle: #8e8e97;
   --accent: oklch(0.82 0.07 262);
   --accent-dim: oklch(0.78 0.075 262);
   --accent-wash: oklch(0.62 0.075 262 / 0.13);
