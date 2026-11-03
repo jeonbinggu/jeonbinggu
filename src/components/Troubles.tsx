@@ -41,7 +41,7 @@ export default function Troubles({
         <button
           type="button"
           onClick={() => setOpen(anyOpen ? [] : items.map((_, i) => i))}
-          className="glass shrink-0 rounded-full px-4 py-[9px] font-mono text-xs text-ink-muted transition-colors hover:text-accent"
+          className="glass shrink-0 rounded-full px-4 py-[9px] text-xs text-ink-muted transition-colors hover:text-accent"
         >
           {anyOpen ? "모두 접기" : "모두 펼치기"}
         </button>
@@ -90,7 +90,8 @@ export default function Troubles({
                       key={label}
                       className="grid gap-2 pt-5 md:grid-cols-[84px_1fr] md:gap-5"
                     >
-                      <p className="font-mono text-xs tracking-[0.08em] text-accent md:pt-1">
+                      {/* 증상·원인·해결 같은 한글 라벨이라 모노를 쓰지 않는다 */}
+                      <p className="text-xs font-medium text-accent md:pt-1">
                         {label}
                       </p>
                       {/* 본문에 \n\n 로 문단을 나눠 두었다 */}

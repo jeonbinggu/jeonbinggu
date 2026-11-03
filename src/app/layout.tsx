@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
+// Geist 는 라틴만 담고 있어 한글은 OS 기본 폰트로 떨어졌다. 한글은 Pretendard 가 받는다.
+// 2MB 짜리 전체 파일 대신 unicode-range 로 92조각 낸 dynamic subset 을 쓴다 —
+// 페이지에 실제로 쓰인 글자가 속한 조각만 내려받는다 (랜딩 기준 19조각 · 약 480KB)
+import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
 
 const geistSans = Geist({

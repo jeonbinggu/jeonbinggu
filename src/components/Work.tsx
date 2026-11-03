@@ -60,7 +60,8 @@ export default async function Work() {
                     <p className="text-base leading-[1.7] text-ink-muted text-pretty">
                       {desc}
                     </p>
-                    <p className="font-mono text-sm text-accent">
+                    {/* 커밋 수·결과에 한글이 섞여 모노 대신 sans */}
+                    <p className="text-sm text-accent">
                       {commitLabel(gh[metric])} · {result}
                     </p>
                     {/* 내부 경로는 Link 여야 프리페치되고 전체 새로고침 없이 넘어간다 */}
@@ -121,7 +122,7 @@ export default async function Work() {
                 <dd className="text-3xl leading-none font-light tracking-[-0.03em]">
                   {value}
                 </dd>
-                <p className="mt-2 font-mono text-xs text-ink-subtle">
+                <p className="mt-2 text-xs text-ink-subtle">
                   {label}
                 </p>
               </div>

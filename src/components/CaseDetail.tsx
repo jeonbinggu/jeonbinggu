@@ -65,7 +65,7 @@ export default function CaseDetail({
                 {stack.map((s) => (
                   <li
                     key={s}
-                    className="glass rounded-full px-3.5 py-[7px] font-mono text-xs text-ink-muted"
+                    className="glass rounded-full px-3.5 py-[7px] text-xs text-ink-muted"
                   >
                     {s}
                   </li>
@@ -209,7 +209,7 @@ export default function CaseDetail({
         <section className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-6 px-6 py-10 md:px-gutter">
           <Link
             href="/#work"
-            className="font-mono text-sm text-accent transition-opacity hover:opacity-70"
+            className="text-sm text-accent transition-opacity hover:opacity-70"
           >
             ← 프로젝트 목록
           </Link>
