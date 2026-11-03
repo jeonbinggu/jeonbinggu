@@ -44,7 +44,7 @@ export default function Contact() {
                   key={term}
                   className="grid items-baseline gap-x-5 gap-y-1 border-b border-hairline py-[18px] md:grid-cols-[104px_1fr_1fr]"
                 >
-                  <span className="font-mono text-sm text-accent">
+                  <span className="text-sm text-accent">
                     {term}
                   </span>
                   <h3 className="text-lg">{role}</h3>

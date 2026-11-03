@@ -27,7 +27,7 @@ export default function Hero() {
             {chips.map((chip) => (
               <li
                 key={chip}
-                className="glass rounded-full px-[13px] py-1.5 font-mono text-xs text-ink-muted"
+                className="glass rounded-full px-[13px] py-1.5 text-xs text-ink-muted"
               >
                 {chip}
               </li>

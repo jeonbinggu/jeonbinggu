@@ -39,11 +39,11 @@ export default function Header({ home = false }: { home?: boolean }) {
         <NavAnchor
           home={home}
           hash="#top"
-          className="flex items-center gap-2.5 font-mono text-sm text-ink"
+          className="flex items-center gap-2.5 text-sm text-ink"
         >
           <span className="size-[9px] rounded-full bg-accent" />
-          전병국
-          <span className="text-ink-subtle">Frontend Developer</span>
+          <span className="font-medium">전병국</span>
+          <span className="font-mono text-ink-subtle">Frontend Developer</span>
         </NavAnchor>
 
         <nav className="flex items-center gap-[26px] text-sm text-ink-muted">

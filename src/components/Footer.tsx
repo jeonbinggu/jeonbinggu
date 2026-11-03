@@ -20,9 +20,9 @@ export default function Footer() {
           {email}
         </a>
 
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-ink/10 pt-[22px] font-mono text-xs text-ink-muted">
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-ink/10 pt-[22px] text-xs text-ink-muted">
           <p>© {new Date().getFullYear()} 전병국 · Seoul, KR</p>
-          <ul className="flex gap-[18px]">
+          <ul className="flex gap-[18px] font-mono">
             {socials.map(({ label, href }) => (
               <li key={label}>
                 <a
